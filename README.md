@@ -1,10 +1,13 @@
 # roms_marbl_example
-An example configuration of [ucla-roms](https://github.com/CESR-lab/ucla-roms) with a 24x24 domain of the Welsh coast.
+An example configuration of [ucla-roms](https://github.com/CESR-lab/ucla-roms) with a 24x24, 10km resolution domain of the Welsh coast, configured to be run on an M2 Macbook Pro.
 BGC is handled by either [BEC]( https://doi.org/10.1029/2004GB002220) or [MARBL](https://doi.org/10.1029/2021MS002647) with BGC initial and boundary conditions taken from an existing run of CESM.
 
+If you want to run on a different personal computer and need assistance, reach out!
+
+![Comparison animation showing surface oxygen in MARBL and BEC](wales.gif)
 
 ## Installation
-This configuration can be run wherever you are already running ROMS, but has been set up to be run on Mac OSX with ARM64 architecture (2020 or later Macs with Apple silicon). 
+This configuration requires installs of [ucla-roms](https://github.com/CESR-lab/ucla-roms) and [MARBL](https://github.com/marbl-ecosys/MARBL/), and has been set up to be run on Mac OSX with ARM64 architecture (2020 or later Macs with Apple silicon). 
 ROMS can be compiled on OSX using the following steps
 
 1. Set up a conda environment 
@@ -17,10 +20,11 @@ conda install -c conda-forge nco ncview
 ```
 (Any python packages should also be installed from `conda-forge` to prevent clashes).
 
-2. [MARBL](https://github.com/marbl-ecosys/MARBL/) should be obtained and compiled using this environment (this configuration is working with [`marbl0.45`](https://github.com/marbl-ecosys/MARBL/releases/tag/marbl0.45.0)).
+2. Clone [MARBL](https://github.com/marbl-ecosys/MARBL/) into a local directory (that we'll refer to as `$MARBL_ROOT`), and compile it using the new conda environment (this configuration is working with [`marbl0.45`](https://github.com/marbl-ecosys/MARBL/releases/tag/marbl0.45.0)).
 Checkout the [`development` branch](https://github.com/marbl-ecosys/MARBL/tree/development). In `$MARBL_ROOT/src/Makefile` set `USEMPI=TRUE` and run `make`, which should produce the file `libmarbl-gnu-mpi.a` at `$MARBL_ROOT/lib/`.
+3. Clone [ROMS](https://github.com/CESR-lab/ucla-roms) into a local directory (that we'll refer to as `$ROMS_ROOT`).
+4. Create a `.ROMS` text file in your home directory (this is the convention used in the running scripts contained in this repo), and `source` it (`source ~/.ROMS`) so as to set certain environment variables:
 
-3. Create a `.ROMS` file in your home directory (this is the convention used in the running scripts contained in this repo), and `source` it so as to set certain environment variables:
 ```
 CONDA_ENV=roms_marbl
 
@@ -32,22 +36,29 @@ export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$NETCDFHOME/lib"
 export PATH="./:$PATH"
 export PATH=$PATH:$ROMS_ROOT/Tools-Roms
 ```
-4. copy this repo into a subdirectory of `ucla-roms` (`$ROMS_ROOT/Examples/` is recommended)
-5. go to `code` and run `make`, which should produce an executable (`roms`) locally. This configuration is set to run on 8 CPUs.
-   By default, ROMS will compile with BGC being handled by MARBL.
-   To switch to BEC, comment (prepend a `!` to) `#define MARBL` in `code/cppdefs.opt` and run `make` again.
-   To run without BGC, additionally undefine the `BIOLOGY_BEC2` cpp key.
+
+5. Compile ROMS:
+    1. First, place this repo into a subdirectory of `ucla-roms` (`$ROMS_ROOT/Examples/` is recommended). 
+    2. Replace certain ROMS files with the ones included in the `Macbook_files_to_replace` subdirectory of this repo using `rsync -av $ROMS_ROOT/Examples/roms_marbl_example/Macbook_files_to_replace/* $ROMS_ROOT`. This will allow compilation on a Mac with ARM64.
+    3. Go to `$ROMS_ROOT/Work` and run `make nhmg`
+    4. Go to `$ROMS_ROOT/Tools-Roms` and run `make`
+    5. Lastly, go to `code` in this repo and run `make`, which should produce an executable (`roms`) locally.
+
+Compile time notes:
+- The number of CPUs is set at compile time (see below, default number is 9).
+- By default, ROMS will compile with BGC being handled by MARBL.
+- To switch to BEC, comment (prepend a `!` to) `#define MARBL` in `code/cppdefs.opt`, uncomment `#define BIOLOGY_BEC2`, run `make` again.
+   To run without BGC, comment both cpp keys.
 
 ## Running
-All of the initial and boundary condition files to run for the month of January 2012 are provided in `INPUT` for both BEC and MARBL. 
-To run the model, simply run the script `fromscratch_run.sh` in a terminal, which will determine whether the MARBL cpp key is active and choose the necessary input files and namelists accordingly.
+All of the initial and boundary condition files to run for the year of 2012 are provided in `INPUT` for both BEC and MARBL. 
+To run the model, simply run the script `fromrestart_run.sh` in a terminal, which will determine whether the MARBL cpp key is active and choose the necessary input files and namelists accordingly.
+The model will restart on the 3rd of January 2012 (restart files are included for MARBL and BEC, but both runs previously started from identical initial conditions)
 The input files are split (one per processor) using the `partit` tool in `$ROMS_ROOT/Tools-Roms` which should be on your path after being added by the `.ROMS` file in Step 3, then the model is run.
 The output files are similarly joined using the `ncjoin` tool.
-The `fromscratch_run.sh` script chooses the corresponding `roms.in` file to run for 1 day with a 36 second timestep while the model stabilises after being initialised from external data. 
-The `fromrestart_run.sh` script can then be used, utilising a restart file created by the previous run and increasing the time step to 6 minutes and the run length to 28 days.
 
 ## Running with modified settings
-The layout of processors is set (`NP_XI`,`NP_ETA`) in `code/param.opt` should you wish to change from the default (4,2), but the model will need to be recompiled, and the `.sh` files will need to be updated before running.
+The layout of processors is set (`NP_XI`,`NP_ETA`) in `code/param.opt` should you wish to change from the default (3,3), but the model will need to be recompiled, and the `.sh` files will need to be updated before running.
 The output frequency is set in `code/ocean_vars.opt`. A recompile will be necessary to change this.
 
 ## MODIFICATIONS FROM ROMS SOURCE CODE
