@@ -1,0 +1,44 @@
+!! At the beginning of the marbldrv_configure_saved_state SR:
+
+
+      ! Begin by checking whether our hardcoded values match MARBL expectations
+      nr_marbl_ss_2d_check=0
+      nr_marbl_ss_3d_check=0
+!     go through both MARBL saved state types and check if fields are
+!     2d or 3d one by one (calculate nr_marbl_ss_2d,nr_marbl_ss_3d):
+!     2d and 3d surface flux saved state variable count:
+            do iss=1,MARBL_instance%surface_flux_saved_state%saved_state_cnt
+               if (MARBL_instance%surface_flux_saved_state%state(iss)%rank==2)
+     &              then
+                  nr_marbl_ss_2d_check=nr_marbl_ss_2d_check+1
+               elseif (MARBL_instance%surface_flux_saved_state%state(iss)%rank==3)
+     &                 then
+                  nr_marbl_ss_3d_check=nr_marbl_ss_3d_check+1
+               end if
+            end do
+!     2d and 2d interior tendency saved state variable count:
+            do iss=1,MARBL_instance%interior_tendency_saved_state%saved_state_cnt
+               if (MARBL_instance%interior_tendency_saved_state%state(iss)%rank==2)
+     &              then
+                  nr_marbl_ss_2d_check=nr_marbl_ss_2d_check+1
+               elseif (MARBL_instance%interior_tendency_saved_state%state(iss)%rank==3)
+     &                 then
+                  nr_marbl_ss_3d_check=nr_marbl_ss_3d_check+1
+               end if
+            end do
+!     Report error if counts don't match            
+            if (nr_marbl_ss_2d/=nr_marbl_ss_2d_check) then
+               write(*,'(7x,A,I4,A,I4,A)')
+     &              'ERROR: Allocated no. of 2D marbl saved state vars '
+     &              ,nr_marbl_ss_2d,
+     &              ' does not match actual no. expected by MARBL: '
+     &              ,nr_marbl_ss_2d_check
+               error stop 'ERROR reported from MARBL library'
+            elseif (nr_marbl_ss_3d/=nr_marbl_ss_3d_check) then
+               write(*,'(7x,A,I4,A,I4,A)')
+     &              'ERROR: Allocated no. of 3D marbl saved state vars '               
+     &              ,nr_marbl_ss_3d,
+     &              ' does not match actual no. expected by MARBL: '
+     &              ,nr_marbl_ss_3d_check
+               error stop 'ERROR reported from MARBL library'
+            end if

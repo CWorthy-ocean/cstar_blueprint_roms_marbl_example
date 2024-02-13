@@ -1,0 +1,61 @@
+
+      ! ****************************************************************
+      ! User inputs
+
+
+      ! note: choice of bgc tracers to output is still selected in tracers.opt.
+
+      logical,parameter :: wrt_his      = .true.     ! t/f to write module history file
+      real,parameter    :: output_period_his = 21600          ! output period in seconds
+      integer,parameter :: nrpf_his          = 124           ! total recs per file
+      
+      ! still need AVERAGES cppflag set for bgc average file to work:
+      logical,parameter :: wrt_avg      = .false.     ! t/f to write module averages file
+      real,parameter    :: output_period_avg = 0          ! output averaging period in seconds
+      integer,parameter :: nrpf_avg          = 20           ! total recs per file
+
+      logical,parameter :: wrt_his_dia           = .true.        ! t/f to write module history file
+      real,parameter    :: output_period_his_dia = 21600  ! output period in seconds
+      integer,parameter :: nrpf_his_dia          = 124             ! total recs per file
+
+      logical,parameter :: wrt_avg_dia           = .false.         ! t/f to write module history file
+      real,parameter    :: output_period_avg_dia = 0    ! output period in seconds
+      integer,parameter :: nrpf_avg_dia          = 20             ! total recs per file
+
+
+
+
+   
+
+      integer, parameter :: nbgc_flx = 2                   ! number of surface bgc flux forcings
+#ifdef PCO2AIR_FORCING
+     &                                +1
+#endif
+#if defined DAILYPAR_PHOTOINHIBITION || defined DAILYPAR_BEC
+     &                                +1
+#endif  
+   
+      !---------------------	FOR IDEALIZED CASE NOTHING BELOW MATTERS ---------
+   
+      integer :: interp_frc  = 0                           ! interpolate forcing from coarser input grid (=1) or not (=0)
+
+      type (ncvs) :: nc_dust = ncvs( name='dust', time_name='dust_time' )  ! dust forcing
+      type (ncvs) :: nc_iron = ncvs( name='iron', time_name='iron_time' )  ! iron forcing      
+#ifdef PCO2AIR_FORCING
+      type (ncvs) :: nc_pco2air   = ncvs( name='pco2_air',   time_name='pco2_time' )
+#ifdef MARBL      
+      type (ncvs) :: nc_pco2air_alt   = ncvs( name='pco2_air_alt',   time_name='pco2_time' )
+#endif      
+#endif            
+#if defined DAILYPAR_PHOTOINHIBITION || defined DAILYPAR_BEC
+      type (ncvs) :: nc_swrad_avg = ncvs( name='swrad_davg', time_name='srf_davg_time' )
+#endif
+#ifdef NOX_FORCING
+      type (ncvs) :: nc_nox = ncvs( name='nox', time_name='nox_time' )
+#endif
+#ifdef NHY_FORCING
+      type (ncvs) :: nc_nhy = ncvs( name='nhy', time_name='nhy_time' )
+#endif
+
+      ! End of user inputs
+      ! *************************************************************
