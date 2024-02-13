@@ -1,0 +1,7 @@
+This directory follows the structure of $ROMS_ROOT and contains Makefiles etc. that should replace those in $ROMS_ROOT in order to compile on Mac with ARM64 architecture (use `uname -m` to find out if this is you).
+This will then compile in a conda environment created as follows:
+
+conda create -n roms_marbl
+conda install -c conda-forge compilers
+conda install netcdf-fortran -c conda-forge
+conda install -c conda-forge nco ncview
