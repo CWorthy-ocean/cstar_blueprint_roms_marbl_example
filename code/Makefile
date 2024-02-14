@@ -27,7 +27,7 @@ all:
 	echo "making depend"
 	cd Compile; make depend 2>/dev/null || :
 	echo "should be done"
-	cd Compile; make mpc; make -j6; mv roms ..
+	cd Compile; make -j6; mv roms ..
 
 # note: "2>/dev/null || :" above is needed to suppress error
 #       stop if no .h or .F files in current directory.
