@@ -18,16 +18,16 @@ all:
 	make show_tag
 	@rsync -a $(ROMS_ROOT)/src/*.opt Compile
 	@rsync -a $(ROMS_ROOT)/src/Makedefs.inc Compile
-	#@rsync -a $(ROMS_ROOT)/src/Make.depend Compile
+	@rsync -a $(ROMS_ROOT)/src/Make.depend Compile
 	cp Make.depend Compile #20231015 - makedepf90 isn't working on ARM64, just copying from Cheyenne
 	@rsync -a $(ROMS_ROOT)/src/Makefile Compile
-	sed -i -e "s#main.F#marbl_driver.F	get_bulk_wnd.F	main.F#g" Compile/Makefile
+	gsed -i -e "s#main.F#marbl_driver.F	get_bulk_wnd.F	main.F#g" Compile/Makefile
 	@rm Compile/*.fpp	2>/dev/null || :
 	cp -p *.h *.F *.opt Makedefs.inc Compile 2>/dev/null || :
 	echo "making depend"
 	cd Compile; make depend 2>/dev/null || :
 	echo "should be done"
-	cd Compile; make mpc; make -j6; mv roms ..
+	cd Compile; make -j6; mv roms ..
 
 # note: "2>/dev/null || :" above is needed to suppress error
 #       stop if no .h or .F files in current directory.
