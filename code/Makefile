@@ -21,7 +21,6 @@ all:
 	#@rsync -a $(ROMS_ROOT)/src/Make.depend Compile
 	cp Make.depend Compile #20231015 - makedepf90 isn't working on ARM64, just copying from Cheyenne
 	@rsync -a $(ROMS_ROOT)/src/Makefile Compile
-	sed -i -e "s#main.F#marbl_driver.F	get_bulk_wnd.F	main.F#g" Compile/Makefile
 	@rm Compile/*.fpp	2>/dev/null || :
 	cp -p *.h *.F *.opt Makedefs.inc Compile 2>/dev/null || :
 	echo "making depend"
