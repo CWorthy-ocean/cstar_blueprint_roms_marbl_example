@@ -7,7 +7,7 @@ If you want to run on a different personal computer and need assistance, reach o
 ![Comparison animation showing surface oxygen in MARBL and BEC](wales.gif)
 
 ## Installation
-This configuration requires installs of [ucla-roms](https://github.com/CESR-lab/ucla-roms) and [MARBL](https://github.com/marbl-ecosys/MARBL/), and has been set up to be run on Mac OSX with ARM64 architecture (2020 or later Macs with Apple silicon). 
+This configuration requires installs of [ucla-roms on the roms_marbl branch](https://github.com/dafyddstephenson/ucla-roms/releases/tag/v0.0.0) and [MARBL](https://github.com/marbl-ecosys/MARBL/), and has been set up to be run on Mac OSX with ARM64 architecture (2020 or later Macs with Apple silicon). 
 ROMS can be compiled on OSX using the following steps
 
 1. Set up a conda environment 
@@ -22,7 +22,7 @@ conda install -c conda-forge nco ncview
 
 2. Clone [MARBL](https://github.com/marbl-ecosys/MARBL/) into a local directory (that we'll refer to as `$MARBL_ROOT`), and compile it using the new conda environment (this configuration is working with [`marbl0.45`](https://github.com/marbl-ecosys/MARBL/releases/tag/marbl0.45.0)).
 Checkout the [`development` branch](https://github.com/marbl-ecosys/MARBL/tree/development). In `$MARBL_ROOT/src/Makefile` set `USEMPI=TRUE` and run `make`, which should produce the file `libmarbl-gnu-mpi.a` at `$MARBL_ROOT/lib/`.
-3. Clone [ROMS](https://github.com/CESR-lab/ucla-roms) into a local directory (that we'll refer to as `$ROMS_ROOT`).
+3. Clone [ROMS](https://github.com/dafyddstephenson/ucla-roms/releases/tag/v0.0.0) into a local directory (that we'll refer to as `$ROMS_ROOT`).
 4. Create a `.ROMS` text file in your home directory (this is the convention used in the running scripts contained in this repo), and `source` it (`source ~/.ROMS`) so as to set certain environment variables:
 
 ```
