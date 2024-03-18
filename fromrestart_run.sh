@@ -32,7 +32,7 @@ cd INPUT/
 mkdir PARTED/
 for X in {\
 roms_bry_2012.nc,roms_bry_bgc_"${PREFIX}".nc,roms_frc.201112.nc,\
-roms_frc.201201.nc,roms_frc_bgc.nc,roms_grd.nc,\
+roms_frc.2012??.nc,roms_frc_bgc.nc,roms_grd.nc,\
 "${PREFIX}"_rst.20120103120000.nc};do
 
     if [ "${X}" = "roms_bry_bgc_NOBGC.nc" ];then continue;fi
@@ -46,6 +46,8 @@ roms_frc.201201.nc,roms_frc_bgc.nc,roms_grd.nc,\
     fi
 done
 cd ${rundir}
+if [ ! -d RST ];then mkdir RST;fi
+ln -s ${rundir}/INPUT/PARTED/${PREFIX}_rst.20120103120000.?.nc RST/
 
 mpirun -n 9 ./roms ./roms.in_"${PREFIX}"
 
