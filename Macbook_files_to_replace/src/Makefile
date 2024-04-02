@@ -18,7 +18,7 @@ KRNSRC = 		param.F dimensions.F	ocean_vars.F tracers.F\
 	boundary.F buffer.F  comm_vars.F coupling.F diag_vars.F\
 	eos_vars.F grid.F hidden_mpi_vars.F mess_buffers.F mixing.F\
 	mpi_test_arr.F private_scratch.F basic_output.F\
-	scalars.F scoord.F strings.F work_mod.F nc_read_write.F\
+	scalars.F scoord.F strings.F work.F nc_read_write.F\
 	surf_flux.F bulk_frc.F get_bulk_wnd.F flux_frc.F wec_frc.F	tides.F	bgc.F	analytical.F\
 	diagnostics.F	step2d_FB.F	read_inp.F\
 	set_weights.F	set_scoord.F	init_scalars.F	init_arrays.F\
@@ -143,7 +143,9 @@ setup_kwds.F: checkkwds read_inp.F
 	./checkkwds
 
 depend:  # Note: cross_matrix no longer used
-	@${ROMS_ROOT}/Tools-Roms/makedep.py  Make.depend
+	@echo 'NOT Updating Make.depend (dependency list)'
+	@echo '${SRCS}'
+	#@${ROMS_ROOT}/Tools-Roms/makedepf90 $(SRCS) > Make.depend #20231015 - Not using the default OR a generated dependency list, just copying from Cheyenne where makedepf90 works
 	@echo 'Updated Make.depend (dependency list)'
 
 # Target to create tar file.
