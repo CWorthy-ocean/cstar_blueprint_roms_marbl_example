@@ -1,4 +1,5 @@
-# UnivAersal machine independent makefile for ROMS model
+# M2 Macbook (ARM64) version
+# Universal machine independent makefile for ROMS model
 #========== ======= =========== ======== === ==== =====
 # Set machine dependent definitions and rules.
 
@@ -13,12 +14,12 @@ include Makedefs.inc
 #   3) boundary conditions;        7) netCDF I/O routines;
 #   4) sea-water EOS routines;     8) model forcing routines;
 
-KRNSRC = 		param.F dimensions.F	read_write.F ocean_vars.F tracers.F\
+KRNSRC = 		param.F dimensions.F	ocean_vars.F tracers.F\
 	boundary.F buffer.F  comm_vars.F coupling.F diag_vars.F\
 	eos_vars.F grid.F hidden_mpi_vars.F mess_buffers.F mixing.F\
 	mpi_test_arr.F private_scratch.F basic_output.F\
-	scalars.F scoord.F strings.F work.F nc_read_write.F\
-	surf_flux.F bulk_frc.F flux_frc.F wec_frc.F	tides.F	bgc.F	analytical.F\
+	scalars.F scoord.F strings.F work_mod.F nc_read_write.F\
+	surf_flux.F bulk_frc.F get_bulk_wnd.F flux_frc.F wec_frc.F	tides.F	bgc.F	analytical.F\
 	diagnostics.F	step2d_FB.F	read_inp.F\
 	set_weights.F	set_scoord.F	init_scalars.F	init_arrays.F\
 	setup_grid1.F	setup_grid2.F\
@@ -39,15 +40,16 @@ KRNSRC = 		param.F dimensions.F	read_write.F ocean_vars.F tracers.F\
         lenstr.F	setup_kwds.F	check_srcs.F	check_switches1.F\
         get_date.F	ext_copy_prv2shr.F		check_switches2.F\
 \
-	mpi_setup.F	exchange.F	mpi_exchange8TA.F\
+	mpi_setup.F\
 \
 	river_frc.F	pipe_frc.F      add_git_hash.F\
-	random_output.F\
+	random_output.F mpi_exchanges.F\
 \
-	bgc_ecosys_vars.F bgc_forces.F bgc_param_ini.F	bgc_ecosys_bec2.F\
+	bgc_ecosys_vars.F bgc_forces.F bgc_param_ini.F	bgc_ecosys_bec2.F marbl_driver.F\
 \
 	main.F	
-
+#read_write.F
+#exchange.F	mpi_exchange8TA.F\
 #ab_ratio.F	alfabeta.F\
 #mpi_exchange4.F	mpi_exchange8TA.F\
 
@@ -71,7 +73,7 @@ IOSRC = checkdims.F	insert_node.F\
  LROMS4 = 2/$(LROMS) 3/$(LROMS) 4/$(LROMS)
 
 # ROMS excutable (This is the first target and hence the default):
-$(SBIN): mpc $(OBJS)
+$(SBIN): $(OBJS)
 	$(LDR) $(FFLAGS) $(LDFLAGS) -o a.out $(OBJS) $(LCDF) $(LMPI)
 	mv a.out $(SBIN)
 
@@ -89,7 +91,7 @@ check_forces: check_forces.o $(SBIN)
 	mv a.out check_forces
 
 # Everything
-all: mpc tools depend $(SBIN)
+all: tools depend $(SBIN)
 
 # A program to test MPI halo exchange routines.
 # - ------- -- ---- --- ---- -------- ---------
@@ -103,16 +105,11 @@ mpi_test: $(MPI_TEST_OBJ)
 
 # Auxiliary utility programs
 # --------- ------- --------
- TOOLS = mpc cppcheck srcscheck checkkwds redefs
+ TOOLS = cppcheck srcscheck checkkwds redefs
 
 tools: $(TOOLS)
 
     TMP = .
-
-mpc: mpc.F Makefile
-	$(CPP) $(CPPFLAGS) -P mpc.F > $(TMP)/mpc.fpp
-	$(CFT) $(FFLAGS) $(LDFLAGS) -o mpc $(TMP)/mpc.fpp
-#	/bin/rm -rf $(TMP)/mpc.fpp
 
 partit_t.fpp: partit.F
 	$(CPP) -P $(CPPFLAGS) -DTRANSPOSED_MPI_NODE_ORDER partit.F| mpc > partit_t.fpp
@@ -146,13 +143,8 @@ setup_kwds.F: checkkwds read_inp.F
 	./checkkwds
 
 depend:  # Note: cross_matrix no longer used
-	@echo 'NOT Updating Make.depend (dependency list)'
-	@echo '${SRCS}'
-	#@${ROMS_ROOT}/Tools-Roms/makedepf90 $(SRCS) > Make.depend #20231015 - Not using the default OR a generated dependency list, just copying from Cheyenne where makedepf90 works
+	@${ROMS_ROOT}/Tools-Roms/makedep.py  Make.depend
 	@echo 'Updated Make.depend (dependency list)'
-
-plotter: plotter.o
-	$(CFT) -o plotter plotter.o $(LIBNCAR)
 
 # Target to create tar file.
 # ------ -- ------ --- -----
