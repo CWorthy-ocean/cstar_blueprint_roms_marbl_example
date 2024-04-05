@@ -31,7 +31,7 @@ forcing: filename
       
 initial: NRREC  filename
           2
-	  RST/MARBL_rst.20120103120000.nc
+      RST/MARBL_rst.20120103120000.nc
 output_root_name:
       MARBL
 
