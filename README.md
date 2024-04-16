@@ -1,48 +1,18 @@
 # roms_marbl_example
-An example configuration of [ucla-roms](https://github.com/CESR-lab/ucla-roms) with a 24x24, 10km resolution domain of the Welsh coast, configured to be run on an M2 Macbook Pro.
+An example configuration of [ucla-roms](https://github.com/CESR-lab/ucla-roms) with a 24x24, 10km resolution domain of the Welsh coast.
 BGC is handled by either [BEC]( https://doi.org/10.1029/2004GB002220) or [MARBL](https://doi.org/10.1029/2021MS002647) with BGC initial and boundary conditions taken from an existing run of CESM.
 
-If you want to run on a different personal computer and need assistance, reach out!
 
 ![Comparison animation showing surface oxygen in MARBL and BEC](wales.gif)
 
 ## Installation
-This configuration requires installs of [ucla-roms](https://github.com/CESR-lab/ucla-roms) and [MARBL](https://github.com/marbl-ecosys/MARBL/), and has been set up to be run on Mac OSX with ARM64 architecture (2020 or later Macs with Apple silicon). 
-ROMS can be compiled on OSX using the following steps
+It is recommended that you use [C-Star](https://github.com/dafyddstephenson/C-Star/tree/add_setup_scripts) 
+to run this configuration. 
+C-Star will automatically obtain and compile the external codebases of ROMS and MARBL. See the C-Star README for instructions on setting up C-Star.
 
-1. Set up a conda environment 
+With the first time C-Star setup complete, use the command `cstar_get_config roms_marbl_example`  to obtain and compile this configuration.
 
-```
-conda create -n roms_marbl
-conda install -c conda-forge compilers
-conda install netcdf-fortran -c conda-forge
-conda install -c conda-forge nco ncview
-```
-(Any python packages should also be installed from `conda-forge` to prevent clashes).
-
-2. Clone [MARBL](https://github.com/marbl-ecosys/MARBL/) into a local directory (that we'll refer to as `$MARBL_ROOT`), and compile it using the new conda environment (this configuration is working with [`marbl0.45`](https://github.com/marbl-ecosys/MARBL/releases/tag/marbl0.45.0)).
-Checkout the [`development` branch](https://github.com/marbl-ecosys/MARBL/tree/development). In `$MARBL_ROOT/src/Makefile` set `USEMPI=TRUE` and run `make`, which should produce the file `libmarbl-gnu-mpi.a` at `$MARBL_ROOT/lib/`.
-3. Clone [ROMS](https://github.com/CESR-lab/ucla-roms) into a local directory (that we'll refer to as `$ROMS_ROOT`).
-4. Create a `.ROMS` text file in your home directory (this is the convention used in the running scripts contained in this repo), and `source` it (`source ~/.ROMS`) so as to set certain environment variables:
-
-```
-CONDA_ENV=roms_marbl
-
-export ROMS_ROOT=<the local location of the [ucla-roms repo](https://github.com/CESR-lab/ucla-roms)>
-export MPIHOME=${CONDA_PREFIX} #e.g. /Users/you/miniconda3/envs/roms_marbl
-export NETCDFHOME=${CONDA_PREFIX}
-export MARBL_ROOT=<the local location of the [MARBL repo](https://github.com/marbl-ecosys/MARBL/)>
-export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$NETCDFHOME/lib"
-export PATH="./:$PATH"
-export PATH=$PATH:$ROMS_ROOT/Tools-Roms
-```
-
-5. Compile ROMS:
-    1. First, place this repo into a subdirectory of `ucla-roms` (`$ROMS_ROOT/Examples/` is recommended). 
-    2. Replace certain ROMS files with the ones included in the `Macbook_files_to_replace` subdirectory of this repo using `rsync -av $ROMS_ROOT/Examples/roms_marbl_example/Macbook_files_to_replace/* $ROMS_ROOT`. This will allow compilation on a Mac with ARM64.
-    3. Go to `$ROMS_ROOT/Work` and run `make nhmg`
-    4. Go to `$ROMS_ROOT/Tools-Roms` and run `make`
-    5. Lastly, go to `code` in this repo and run `make`, which should produce an executable (`roms`) locally.
+If you want to modify the code and recompile at any time, go into the code directory (`${CSTAR_ROOT}/configurations/roms_marbl_example/code`) and run `make`.
 
 Compile time notes:
 - The number of CPUs is set at compile time (see below, default number is 9).
@@ -52,7 +22,10 @@ Compile time notes:
 
 ## Running
 All of the initial and boundary condition files to run for the year of 2012 are provided in `INPUT` for both BEC and MARBL. 
-To run the model, simply run the script `fromrestart_run.sh` in a terminal, which will determine whether the MARBL cpp key is active and choose the necessary input files and namelists accordingly.
+To run the model from the shell, simply run the script `fromrestart_run.sh`, which will determine whether the MARBL cpp key is active and choose the necessary input files and namelists accordingly.
+
+If you are on a system with a job scheduler you will need to modify `fromrestart_run.sh` to include any scheduler commands.
+
 The model will restart on the 3rd of January 2012 (restart files are included for MARBL and BEC, but both runs previously started from identical initial conditions)
 The input files are split (one per processor) using the `partit` tool in `$ROMS_ROOT/Tools-Roms` which should be on your path after being added by the `.ROMS` file in Step 3, then the model is run.
 The output files are similarly joined using the `ncjoin` tool.

@@ -4,10 +4,10 @@
 /*
  * CHOOSE ONLY ONE PRIMARY FLAG FOR SWITCH LIST BELOW
  */
-# define ROMS_MARBL_EXAMPLE
+#define ROMS_MARBL_EXAMPLE
 
 
-#if defined ROMS_MARBL_EXAMPLE
+#ifdef ROMS_MARBL_EXAMPLE
 /*
    Main switch starts here: model configuration choice.
 */
