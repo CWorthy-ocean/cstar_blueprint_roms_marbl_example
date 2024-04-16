@@ -4,7 +4,6 @@ timers.o : timers.F cppdefs.opt param.o comm_vars.o scalars.o
 main.o : main.F cppdefs.opt param.o tracers.o sponge_tune.o scalars.o ocean_vars.o basic_output.o dimensions.o grid.o analytical.o diagnostics.o boundary.o particles.o random_output.o bgc_param_ini.o bgc.o extract_data.o surf_flux.o tides.o 
 step3d_t_ISO.o : step3d_t_ISO.F cppdefs.opt param.o hidden_mpi_vars.o private_scratch.o pipe_frc.o river_frc.o surf_flux.o tracers.o marbl_driver.o bgc_ecosys_vars.o diagnostics.o eos_vars.o grid.o mixing.o ocean_vars.o scalars.o strings.o 
 visc3d_S_FS.o : visc3d_S_FS.F cppdefs.opt dimensions.o param.o diagnostics.o coupling.o grid.o mixing.o scalars.o 
-get_bulk_wnd.o : get_bulk_wnd.F cppdefs.opt param.o roms_read_write.o bulk_wnd.opt 
 get_date.o : get_date.F cppdefs.opt 
 sponge_tune.o : sponge_tune.opt 
 lenstr.o : lenstr.F 
@@ -17,13 +16,13 @@ scalars.o : scalars.F cppdefs.opt param.o
 pipe_frc.o : pipe_frc.F cppdefs.opt dimensions.o roms_read_write.o nc_read_write.o scalars.o pipe_frc.opt pipe_frc_ana.opt 
 bgc_3Ddiagnostics.o : bgc_3Ddiagnostics.opt 
 pipe_frc_ana.o : pipe_frc_ana.opt 
-old_bulk_frc.o : old_bulk_frc.F cppdefs.opt param.o roms_read_write.o get_bulk_wnd.o bulk_frc.opt surf_flux.o tracers.o grid.o mixing.o ocean_vars.o scalars.o 
+old_bulk_frc.o : old_bulk_frc.F cppdefs.opt param.o roms_read_write.o  bulk_frc.opt surf_flux.o tracers.o grid.o mixing.o ocean_vars.o scalars.o 
 cppdefs.o : cppdefs.opt set_global_definitions.h 
 init_scalars.o : init_scalars.F cppdefs.opt param.o bgc.o boundary.o comm_vars.o mixing.o scalars.o roms_read_write.o dimensions.o 
 alfabeta.o : alfabeta.F cppdefs.opt param.o tracers.o eos_vars.o grid.o ocean_vars.o scalars.o 
 hidden_mpi_vars.o : hidden_mpi_vars.F cppdefs.opt param.o 
 tracers.o : tracers.opt 
-set_forces.o : set_forces.F cppdefs.opt param.o bulk_frc.o get_bulk_wnd.o flux_frc.o surf_flux.o tracers.o river_frc.o pipe_frc.o tides.o wec_frc.o bgc.o hidden_mpi_vars.o scalars.o analytical.o boundary.o compute_tile_bounds.h 
+set_forces.o : set_forces.F cppdefs.opt param.o bulk_frc.o  flux_frc.o surf_flux.o tracers.o river_frc.o pipe_frc.o tides.o wec_frc.o bgc.o hidden_mpi_vars.o scalars.o analytical.o boundary.o compute_tile_bounds.h 
 mess_buffers.o : mess_buffers.F cppdefs.opt param.o scalars.o 
 boundary.o : boundary.F cppdefs.opt param.o roms_read_write.o dimensions.o tracers.o scalars.o 
 work.o : work.F cppdefs.opt param.o scalars.o 
@@ -32,7 +31,7 @@ ocean_vars.o : ocean_vars.F cppdefs.opt param.o scalars.o
 diag_vars.o : diag_vars.F cppdefs.opt 
 mpi_test_arr.o : mpi_test_arr.F cppdefs.opt param.o 
 wvlcty.o : wvlcty.F cppdefs.opt param.o hidden_mpi_vars.o private_scratch.o grid.o ocean_vars.o scalars.o 
-marbl_driver.o : marbl_driver.F cppdefs.opt param.o dimensions.o get_bulk_wnd.o bgc_forces.o surf_flux.o nc_read_write.o scalars.o ocean_vars.o bgc_tracers_indx.opt 
+marbl_driver.o : marbl_driver.F cppdefs.opt param.o dimensions.o  bgc_forces.o surf_flux.o nc_read_write.o scalars.o ocean_vars.o bgc_tracers_indx.opt 
 bgc.o : bgc.opt 
 w3dbc_im.o : w3dbc_im.F cppdefs.opt param.o boundary.o grid.o ocean_vars.o scalars.o 
 v3dbc_im.o : v3dbc_im.F cppdefs.opt param.o wec_frc.o boundary.o grid.o ocean_vars.o scalars.o sponge_tune.o 
@@ -56,7 +55,7 @@ tides.o : tides.F cppdefs.opt param.o scalars.o nc_read_write.o roms_read_write.
 cppcheck.o : cppcheck.F 
 buffer.o : buffer.F cppdefs.opt param.o scalars.o 
 u3dbc_new.o : u3dbc_new.F cppdefs.opt param.o dimensions.o boundary.o grid.o scalars.o hidden_mpi_vars.o 
-init_arrays.o : init_arrays.F cppdefs.opt param.o hidden_mpi_vars.o private_scratch.o compute_tile_bounds.h wec_frc.o bulk_frc.o get_bulk_wnd.o surf_flux.o tracers.o coupling.o eos_vars.o grid.o mixing.o ocean_vars.o basic_output.o scalars.o boundary.o buffer.o mess_buffers.o dimensions.o flux_frc.o pipe_frc.o bgc_ecosys_vars.o bgc_forces.o bgc.o compute_extended_bounds.h 
+init_arrays.o : init_arrays.F cppdefs.opt param.o hidden_mpi_vars.o private_scratch.o compute_tile_bounds.h wec_frc.o bulk_frc.o  surf_flux.o tracers.o coupling.o eos_vars.o grid.o mixing.o ocean_vars.o basic_output.o scalars.o boundary.o buffer.o mess_buffers.o dimensions.o flux_frc.o pipe_frc.o bgc_ecosys_vars.o bgc_forces.o bgc.o compute_extended_bounds.h 
 get_init.o : get_init.F cppdefs.opt param.o tracers.o bgc.o marbl_driver.o coupling.o grid.o hidden_mpi_vars.o mixing.o ocean_vars.o basic_output.o scalars.o bgc_ecosys_vars.o diagnostics.o sponge_tune.o nc_read_write.o roms_read_write.o dimensions.o 
 diag.o : diag.opt 
 basic_output.o : basic_output.F cppdefs.opt param.o nc_read_write.o roms_read_write.o sponge_tune.o diagnostics.o scalars.o ocean_vars.o ocean_vars.opt mixing.o eos_vars.o grid.o tracers.o coupling.o marbl_driver.o private_scratch.o dimensions.o 
@@ -92,7 +91,7 @@ dimensions.o : dimensions.F param.o hidden_mpi_vars.o cppdefs.opt
 t3dmix_GP.o : t3dmix_GP.F cppdefs.opt param.o hidden_mpi_vars.o private_scratch.o tracers.o diagnostics.o grid.o mixing.o ocean_vars.o scalars.o 
 diagnostics.o : diagnostics.F cppdefs.opt dimensions.o tracers.o ocean_vars.o scalars.o hidden_mpi_vars.o nc_read_write.o roms_read_write.o grid.o tides.o diagnostics.opt coupling.o param.o eos_vars.o 
 sediment.o : sediment.F cppdefs.opt param.o grid.o hidden_mpi_vars.o private_scratch.o ocean_vars.o scalars.o 
-bulk_frc.o : bulk_frc.F cppdefs.opt param.o dimensions.o mpi_exchanges.o roms_read_write.o get_bulk_wnd.o bulk_frc.opt surf_flux.o tracers.o grid.o mixing.o ocean_vars.o scalars.o 
+bulk_frc.o : bulk_frc.F cppdefs.opt param.o dimensions.o mpi_exchanges.o roms_read_write.o  bulk_frc.opt surf_flux.o tracers.o grid.o mixing.o ocean_vars.o scalars.o 
 private_scratch.o : private_scratch.F cppdefs.opt param.o scalars.o 
 ext_copy_prv2shr.o : ext_copy_prv2shr.F cppdefs.opt param.o compute_extended_bounds.h 
 bgc_param_ini.o : bgc_param_ini.F cppdefs.opt param.o grid.o bgc_ecosys_vars.o 
