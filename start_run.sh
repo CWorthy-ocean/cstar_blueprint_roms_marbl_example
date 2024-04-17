@@ -1,6 +1,5 @@
 #!/bin/bash
 
-cstar_env #Activate C-Star environment
 
 case "$CSTAR_SYSTEM" in
     osx_arm64_gnu)
@@ -14,12 +13,14 @@ case "$CSTAR_SYSTEM" in
         }
         ;;
     ncar_derecho_intel)
+	cd $PBS_O_WORKDIR
         ROMS_EXEC_CMD() {
-            echo "not yet"
+            mpirun -n 9 ./roms ./roms.in_${PREFIX}	    
         }
         ;;
     *)
         echo "System $CSTAR_SYSTEM not recognised. Configure your ROMS-MARBL environment using C-Star (https://github.com/CWorthy-ocean/C-Star)"
+	exit 1
         ;;
 esac
 
