@@ -68,7 +68,6 @@ extract_data.o : extract_data.F cppdefs.opt dimensions.o grid.o nc_read_write.o 
 step3d_uv2.o : step3d_uv2.F cppdefs.opt param.o hidden_mpi_vars.o private_scratch.o river_frc.o wec_frc.o dimensions.o diagnostics.o coupling.o eos_vars.o grid.o mixing.o ocean_vars.o scalars.o surf_flux.o strings.o 
 sponge_tune.o : sponge_tune.F cppdefs.opt nc_read_write.o scalars.o dimensions.o diagnostics.o roms_read_write.o hidden_mpi_vars.o mixing.o sponge_tune.opt grid.o param.o 
 diag.o : diag.F cppdefs.opt param.o hidden_mpi_vars.o private_scratch.o scalars.o compute_tile_bounds.h comm_vars.o diag_vars.o eos_vars.o grid.o ocean_vars.o diag.opt 
-bulk_wnd.o : bulk_wnd.opt 
 extract_data.o : extract_data.opt 
 tracers.o : tracers.F cppdefs.opt param.o dimensions.o surf_flux.o scalars.o nc_read_write.o roms_read_write.o marbl_driver.o mpi_exchanges.o compute_extended_bounds.h tracers.opt 
 check_switches2.o : check_switches2.F cppdefs.opt param.o hidden_mpi_vars.o compute_tile_bounds.h strings.o scalars.o 
