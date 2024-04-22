@@ -1,13 +1,30 @@
 #!/bin/bash
 
-################################################################################
-# This "fromrestart" run begins one day later than the "fromscratch" run,
-# allowing the use of a ROMS-generated restart file. It is assumed the user has
-# already run ./fromscratch_run.sh to produce {MARBL,BEC}_rst.20120102120000.nc
-################################################################################
 
-## Set environment variables
-source ~/.ROMS 
+case "$CSTAR_SYSTEM" in
+    osx_arm64_gnu)
+        ROMS_EXEC_CMD() {
+            mpirun -n 9 ./roms ./roms.in_${PREFIX}
+        }
+        ;;
+    sdsc_expanse_intel)
+        ROMS_EXEC_CMD() {
+            srun --mpi=pmi2 -n 9 ./roms ./roms.in_${PREFIX}
+        }
+        ;;
+    ncar_derecho_intel)
+	cd $PBS_O_WORKDIR
+        ROMS_EXEC_CMD() {
+            mpirun -n 9 ./roms ./roms.in_${PREFIX}	    
+        }
+        ;;
+    *)
+        echo "System $CSTAR_SYSTEM not recognised. Configure your ROMS-MARBL environment using C-Star (https://github.com/CWorthy-ocean/C-Star)"
+	exit 1
+        ;;
+esac
+
+
 NP_XI=3; # from code/param.opt
 NP_ETA=3;
 
@@ -28,6 +45,9 @@ fi
 
 # Split the initial and boundary conditions for use on multiple CPUs (default 8)
 rundir=$(pwd)
+if [ -e roms ];then rm roms;fi
+ln -s code/roms .
+
 cd INPUT/
 mkdir PARTED/
 for X in {\
@@ -49,7 +69,8 @@ cd ${rundir}
 if [ ! -d RST ];then mkdir RST;fi
 ln -s ${rundir}/INPUT/PARTED/${PREFIX}_rst.20120103120000.?.nc RST/
 
-mpirun -n 9 ./roms ./roms.in_"${PREFIX}"
+#mpirun -n 9 ./roms ./roms.in_"${PREFIX}"
+ROMS_EXEC_CMD
 
 
 echo "MAIN RUN DONE"
