@@ -24,7 +24,7 @@
       integer, parameter :: NSUB_X = 1, NSUB_E = 1
 
       ! Defining number of tracers
-      integer, parameter :: ntrc_pas=0      
+      integer, parameter :: nt_passive=0      
 # ifdef BIOLOGY_BEC2
      &       ,  ntrc_bio_base=26
      &       ,  ntrc_bio=26
@@ -41,6 +41,6 @@
      &       , ntrc_salt=0
 #endif
 
-      integer, parameter :: nt=1+ntrc_pas+ntrc_bio+ntrc_salt
+      integer, parameter :: nt=1+nt_passive+ntrc_bio+ntrc_salt
     
       
