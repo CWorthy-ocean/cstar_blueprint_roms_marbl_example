@@ -40,10 +40,10 @@
 
 ! - TEMP & SALT:
 
-      wrt_t     (itmp)=.True.;    wrt_t_avg(itmp) =.True.    ! temp
+      wrt_t     (itemp)=.True.;    wrt_t_avg(itemp) =.True.    ! temp
       
 #ifdef SALINITY
-      wrt_t     (islt)=.True.;    wrt_t_avg(islt) =.True.    ! salinity
+      wrt_t     (isalt)=.True.;    wrt_t_avg(isalt) =.True.    ! salinity
 #endif
 
 

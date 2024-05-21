@@ -35,12 +35,15 @@
      &       , ntrc_bio_base=0
      &       , ntrc_bio=0
 # endif
+#ifdef Ncycle_SY
+     &       , ntrc_Ncycle=3
+#else
+     &       , ntrc_Ncycle=0
+#endif
 #ifdef SALINITY
      &       , ntrc_salt=1
 #else
      &       , ntrc_salt=0
 #endif
-
-      integer, parameter :: nt=1+nt_passive+ntrc_bio+ntrc_salt
-    
+      integer, parameter :: nt=1+nt_passive+ntrc_bio+ntrc_Ncycle+ntrc_salt    
       

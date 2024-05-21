@@ -71,7 +71,7 @@
 
                         /* Biology Settings */
 # define MARBL
-!# define MARBL_DIAGS
+# define MARBL_DIAGS
 
 #ifdef MARBL
 # define NOX_FORCING
@@ -80,7 +80,6 @@
 
 !# define BIOLOGY_BEC2
 
-# define AVERAGES
 
 #ifdef BIOLOGY_BEC2
 # define BIOLOGY                  /* DPD current does nothing in new code */
