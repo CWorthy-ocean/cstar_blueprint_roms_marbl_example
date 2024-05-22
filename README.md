@@ -3,16 +3,16 @@ An example configuration of [ucla-roms](https://github.com/CESR-lab/ucla-roms) w
 BGC is handled by either [BEC]( https://doi.org/10.1029/2004GB002220) or [MARBL](https://doi.org/10.1029/2021MS002647) with BGC initial and boundary conditions taken from an existing run of CESM.
 
 
-![Comparison animation showing surface oxygen in MARBL and BEC](wales.gif)
+![Comparison animation showing surface dissolved organic carbon in MARBL and BEC](DOC.gif)
 
 ## Installation
 It is recommended that you use [C-Star](https://github.com/dafyddstephenson/C-Star/tree/add_setup_scripts) 
 to run this configuration. 
 C-Star will automatically obtain and compile the external codebases of ROMS and MARBL. See the C-Star README for instructions on setting up C-Star.
 
-With the first time C-Star setup complete, use the command `cstar_get_config roms_marbl_example`  to obtain and compile this configuration.
+With the first time C-Star setup complete, use the command `cstar_get_blueprint roms_marbl_example`  to obtain and compile this blueprint.
 
-If you want to modify the code and recompile at any time, go into the code directory (`${CSTAR_ROOT}/configurations/roms_marbl_example/code`) and run `make`.
+If you want to modify the code and recompile at any time, go into the code directory (`${CSTAR_ROOT}/blueprints/roms_marbl_example/code`) and run `make`.
 
 Compile time notes:
 - The number of CPUs is set at compile time (see below, default number is 9).
