@@ -1,0 +1,16 @@
+# When you cloned this repository, Makefile symbolically linked to this file
+# This way, the first time you run "make":
+# - this Makefile is replaced with the one in your local $ROMS_ROOT/Work (wherever that is)
+# - make is run again with the correct Makefile for your copy of ROMS
+.PHONY: link_correct_makefile
+
+ifndef ROMS_ROOT
+$(error ROMS_ROOT environment variable is not set. Please verify you have a correct install of ROMS and your environment is properly configured)
+endif
+
+
+link_correct_makefile:
+	@echo "Running make for the first time. Getting Makefile from $(ROMS_ROOT)/Work/Makefile and re-running make..."
+	@rm Makefile
+	@ln -s $(ROMS_ROOT)/Work/Makefile .
+	make
