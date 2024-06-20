@@ -1,29 +1,39 @@
 #!/bin/bash
 
+MY_SYSTEM=$(uname -s)_$(uname -m)
+if [ ! -z ${LMOD_SYSHOST} ];then
+    MY_SYSTEM+=_${LMOD_SYSHOST}
+elif [ ! -z ${LMOD_SYSTEM_NAME} ];then
+    MY_SYSTEM+=_${LMOD_SYSTEM_NAME}
+fi
 
-case "$CSTAR_SYSTEM" in
-    osx_arm64_gnu)
+case "$MY_SYSTEM" in
+    Darwin_arm64)
         ROMS_EXEC_CMD() {
             mpirun -n 9 ./roms ./roms.in_${PREFIX}
         }
         ;;
-    sdsc_expanse_intel)
+    Linux_x86_64_expanse)
         ROMS_EXEC_CMD() {
             srun --mpi=pmi2 -n 9 ./roms ./roms.in_${PREFIX}
         }
         ;;
-    ncar_derecho_intel)
+    Linux_x86_64_derecho)
 	cd $PBS_O_WORKDIR
         ROMS_EXEC_CMD() {
             mpirun -n 9 ./roms ./roms.in_${PREFIX}	    
         }
         ;;
-    *)
-        echo "System $CSTAR_SYSTEM not recognised. Configure your ROMS-MARBL environment using C-Star (https://github.com/CWorthy-ocean/C-Star)"
+    Linux_x86_64_perlmutter)
+	ROMS_EXEC_CMD() {
+	    srun -n 9 ./roms ./roms.in_${PREFIX}
+	}
+	;;
+    Linux_x86_64)
+	echo "System unsupported"
 	exit 1
-        ;;
-esac
-
+	;;
+	
 
 NP_XI=3; # from code/param.opt
 NP_ETA=3;
@@ -69,7 +79,6 @@ cd ${rundir}
 if [ ! -d RST ];then mkdir RST;fi
 ln -s ${rundir}/INPUT/PARTED/${PREFIX}_rst.20120103120000.?.nc RST/
 
-#mpirun -n 9 ./roms ./roms.in_"${PREFIX}"
 ROMS_EXEC_CMD
 
 

@@ -1,19 +1,26 @@
 #!/bin/bash
 
-case "$CSTAR_SYSTEM" in
-    osx_arm64_gnu)
+MY_SYSTEM=$(uname -s)_$(uname -m)
+if [ ! -z ${LMOD_SYSHOST} ];then
+    MY_SYSTEM+=_${LMOD_SYSHOST}
+elif [ ! -z ${LMOD_SYSTEM_NAME} ];then
+    MY_SYSTEM+=_${LMOD_SYSTEM_NAME}
+fi
+
+case "$MY_SYSTEM" in
+    Darwin_arm64)
         SCHEDULER=NONE
         ;;
-    sdsc_expanse_intel)
-        SCHEDULER=SLURM
-        PARTITION=debug
-         ;;
-    ncar_derecho_intel)
+    Linux_x86_64_derecho)
         SCHEDULER=PBS
 	PARTITION=develop
         ;;
+    Linux_x86_64_expanse|Linux_x86_64_perlmutter)
+	SCHEDULER=SLURM
+	PARTITION=debug
+	;;
     *)
-        echo "System $CSTAR_SYSTEM not recognised. Configure your ROMS-MARBL environment using C-Star (https://github.com/CWorthy-ocean/C-Star)"
+        echo "System not recognised"
 	exit 1
         ;;
 esac
