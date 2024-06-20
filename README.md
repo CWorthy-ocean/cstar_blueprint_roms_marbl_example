@@ -10,7 +10,7 @@ This requires installs of [ucla-roms](https://github.com/CESR-lab/ucla-roms) and
 It is currently recommended (2024-06-20) to use [my fork of ROMS](https://github.com/dafyddstephenson/ucla-roms) checked out to the `marbl_improvements_20240611` branch. MARBL should be checked out to `marbl0.45.0`.
 If you are unsure how to install these dependencies, you may want to try installing via C-Star on another branch of this respository. With ROMS and MARBL installed:
 
-- Clone this repo to a suitable directory (e.g. `$ROMS_ROOT/Examples/roms_marbl_example` or `$ROMS_ROOT/Work/roms_marbl_example`)
+- Clone this repo to a suitable directory (e.g. `$ROMS_ROOT/Examples/roms_marbl_example` or `$ROMS_ROOT/Work/roms_marbl_example` using `git clone https://github.com/dafyddstephenson/roms_marbl_example.git roms_marbl_example;cd roms_marbl_example;git checkout no_cstar`)
 - Obtain the input files (initial and boundary conditions, surface forcing) using `./get_input_files.sh`
 - run `make` in `code`. Note that if you are on a non-intel system such as OSX or perlmutter you will need to run `make COMPILER=gnu`. If you are unsure, see whether `mpifort --version` returns GNU or ifort.
 - After successfully compiling, start the run with `submit_job.sh`. This will figure out which system you are on and send a job to the appropriate scheduler using the account key saved in the `${ACCOUNT_KEY}` environment variable.
