@@ -6,14 +6,12 @@ BGC is handled by either [BEC]( https://doi.org/10.1029/2004GB002220) or [MARBL]
 ![Comparison animation showing surface dissolved organic carbon in MARBL and BEC](DOC.gif)
 
 ## Installation
-It is recommended that you use [C-Star](https://github.com/dafyddstephenson/C-Star/tree/add_setup_scripts) 
-to run this configuration. 
-C-Star will automatically obtain and compile the external codebases of ROMS and MARBL. See the C-Star README for instructions on setting up C-Star.
+This requires installs of ucla-roms and MARBL. If you are unsure how to install these dependencies, you may want to try installing via C-Star on another branch of this respository. With ROMS and MARBL installed:
 
-With the first time C-Star setup complete, use the command `cstar_get_blueprint roms_marbl_example`  to obtain and compile this blueprint.
-
-If you want to modify the code and recompile at any time, go into the code directory (`${CSTAR_ROOT}/blueprints/roms_marbl_example/code`) and run `make`.
-
+- Clone this repo to a suitable directory (e.g. `$ROMS_ROOT/Examples/roms_marbl_example` or `$ROMS_ROOT/Work/roms_marbl_example`)
+- Obtain the input files (initial and boundary conditions, surface forcing) using `./get_input_files.sh`
+- run `make` in `code`. Note that if you are on a non-intel system such as OSX or perlmutter you will need to run `make COMPILER=gnu`. If you are unsure, see whether `mpifort --version` returns GNU or ifort.
+- After successfully compiling, start the run with `submit_job.sh`. This will figure out which system you are on and send a job to the appropriate scheduler using the account key saved in the `${ACCOUNT_KEY}` environment variable.
 Compile time notes:
 - The number of CPUs is set at compile time (see below, default number is 9).
 - By default, ROMS will compile with BGC being handled by MARBL.
@@ -21,8 +19,8 @@ Compile time notes:
    To run without BGC, comment both cpp keys.
 
 ## Running
-All of the initial and boundary condition files to run for the year of 2012 are provided in `INPUT` for both BEC and MARBL. 
-To run the model from the shell, activate the C-Star environment using `cstar_env` and simply run the script `start_run.sh`. This script will use the environment variable `CSTAR_SYSTEM` (set during C-Star setup) to determine what machine you are running on and start the job. If you are on a supported HPC system, you will need to have your account key set as the environment variable `ACCOUNT_KEY`. The script will determine whether the MARBL cpp key is active and choose the necessary input files and namelists accordingly.
+All of the initial and boundary condition files to run for the year of 2012 will be downloaded to INPUT for both BEC and MARBL. 
+Start the run with `submit_job.sh`. This will figure out which system you are on and send a job to the appropriate scheduler. If you are on a supported HPC system, you will need to have your account key set as the environment variable `ACCOUNT_KEY`. The script will determine whether the MARBL cpp key is active and choose the necessary input files and namelists accordingly.
 
 The model will restart on the 3rd of January 2012 (restart files are included for MARBL and BEC, but both runs previously started from identical initial conditions)
 The input files are split (one per processor) using the `partit` tool in `$ROMS_ROOT/Tools-Roms` which should be on your path after being added by the `.ROMS` file in Step 3, then the model is run.
