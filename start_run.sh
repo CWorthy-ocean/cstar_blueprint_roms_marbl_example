@@ -33,7 +33,7 @@ case "$MY_SYSTEM" in
 	echo "System unsupported"
 	exit 1
 	;;
-	
+esac	
 
 NP_XI=3; # from code/param.opt
 NP_ETA=3;
