@@ -14,7 +14,8 @@ If you are unsure how to install these dependencies, you may want to try install
 - Obtain the input files (initial and boundary conditions, surface forcing) using `./get_input_files.sh`
 - run `make` in `code`. Note that if you are on a non-intel system such as OSX or perlmutter you will need to run `make COMPILER=gnu`. If you are unsure, see whether `mpifort --version` returns GNU or ifort.
 - After successfully compiling, start the run with `submit_job.sh`. This will figure out which system you are on and send a job to the appropriate scheduler using the account key saved in the `${ACCOUNT_KEY}` environment variable.
-Compile time notes:
+  
+## Compile time notes:
 - The number of CPUs is set at compile time (see below, default number is 9).
 - By default, ROMS will compile with BGC being handled by MARBL.
 - To switch to BEC, comment (prepend a `!` to) `#define MARBL` in `code/cppdefs.opt`, uncomment `#define BIOLOGY_BEC2`, run `make` again.
