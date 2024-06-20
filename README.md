@@ -6,7 +6,9 @@ BGC is handled by either [BEC]( https://doi.org/10.1029/2004GB002220) or [MARBL]
 ![Comparison animation showing surface dissolved organic carbon in MARBL and BEC](DOC.gif)
 
 ## Installation
-This requires installs of ucla-roms and MARBL. If you are unsure how to install these dependencies, you may want to try installing via C-Star on another branch of this respository. With ROMS and MARBL installed:
+This requires installs of [ucla-roms](https://github.com/CESR-lab/ucla-roms) and [MARBL](https://github.com/marbl-ecosys/MARBL). 
+It is currently recommended (2024-06-20) to use [my fork of ROMS](https://github.com/dafyddstephenson/ucla-roms) checked out to the `marbl_improvements_20240611` branch. MARBL should be checked out to `marbl0.45.0`.
+If you are unsure how to install these dependencies, you may want to try installing via C-Star on another branch of this respository. With ROMS and MARBL installed:
 
 - Clone this repo to a suitable directory (e.g. `$ROMS_ROOT/Examples/roms_marbl_example` or `$ROMS_ROOT/Work/roms_marbl_example`)
 - Obtain the input files (initial and boundary conditions, surface forcing) using `./get_input_files.sh`
