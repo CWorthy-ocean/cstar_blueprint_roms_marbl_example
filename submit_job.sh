@@ -1,5 +1,4 @@
 #!/bin/bash
-
 MY_SYSTEM=$(uname -s)_$(uname -m)
 if [ ! -z ${LMOD_SYSHOST} ];then
     MY_SYSTEM+=_${LMOD_SYSHOST}
@@ -48,6 +47,7 @@ case "$SCHEDULER" in
             echo "ACCOUNT_KEY environment variable empty. Set using export ACCOUNT_KEY=<your_account_key>."
             exit 1
         fi
+
         sbatch --job-name="roms_marbl_example" \
                --output="roms_marbl_example.out" \
                --partition=${PARTITION} \
@@ -56,6 +56,7 @@ case "$SCHEDULER" in
                --account=${ACCOUNT_KEY} \
                --export=ALL \
                --mail-type=ALL \
+	       -C cpu \
                -t 00:30:00 \
                start_run.sh
         ;;
