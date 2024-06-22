@@ -8,11 +8,11 @@ S-coord: THETA_S,   THETA_B,    TCLINE (m)
           5.0D0        2.0D0    300.D0
 
 grid:  filename
-      INPUT/PARTED/roms_grd.nc
+      INPUT/PARTITIONED/roms_grd.nc
 
 forcing: filename    
-      INPUT/PARTED/roms_bry_2012.nc
-      INPUT/PARTED/roms_frc.201201.nc
+      INPUT/PARTITIONED/roms_bry_2012.nc
+      INPUT/PARTITIONED/roms_frc.201201.nc
       
 initial: NRREC  filename
           2

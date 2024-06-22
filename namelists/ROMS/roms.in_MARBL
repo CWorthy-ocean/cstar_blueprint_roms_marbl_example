@@ -8,30 +8,30 @@ S-coord: THETA_S,   THETA_B,    TCLINE (m)
           5.0D0        2.0D0    300.D0
 
 grid:  filename
-      INPUT_DIR/PARTED/roms_grd.nc
+      INPUT_DIR/PARTITIONED/roms_grd.nc
 
 forcing: filename    
-      INPUT_DIR/PARTED/roms_frc_bgc.nc
-      INPUT_DIR/PARTED/roms_bry_2012.nc
-      INPUT_DIR/PARTED/roms_bry_bgc_MARBL.nc
-      INPUT_DIR/PARTED/roms_frc.201112.nc      
-      INPUT_DIR/PARTED/roms_frc.201201.nc
-      INPUT_DIR/PARTED/roms_frc.201202.nc
-      INPUT_DIR/PARTED/roms_frc.201203.nc
-      INPUT_DIR/PARTED/roms_frc.201204.nc
-      INPUT_DIR/PARTED/roms_frc.201205.nc
-      INPUT_DIR/PARTED/roms_frc.201206.nc
-      INPUT_DIR/PARTED/roms_frc.201207.nc
-      INPUT_DIR/PARTED/roms_frc.201208.nc
-      INPUT_DIR/PARTED/roms_frc.201209.nc
-      INPUT_DIR/PARTED/roms_frc.201210.nc
-      INPUT_DIR/PARTED/roms_frc.201211.nc
-      INPUT_DIR/PARTED/roms_frc.201212.nc      
+      INPUT_DIR/PARTITIONED/roms_frc_bgc.nc
+      INPUT_DIR/PARTITIONED/roms_bry_2012.nc
+      INPUT_DIR/PARTITIONED/roms_bry_bgc_MARBL.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201112.nc      
+      INPUT_DIR/PARTITIONED/roms_frc.201201.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201202.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201203.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201204.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201205.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201206.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201207.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201208.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201209.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201210.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201211.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201212.nc      
       
       
 initial: NRREC  filename
           2
-      INPUT_DIR/PARTED/MARBL_rst.20120103120000.nc
+      INPUT_DIR/PARTITIONED/MARBL_rst.20120103120000.nc
 
 MARBL_biogeochemistry: namelist  tracer_output_list   diagnostic_output_list
       MARBL_NAMELIST_DIR/marbl_in
