@@ -10,11 +10,10 @@ S-coord: THETA_S,   THETA_B,    TCLINE (m)
 grid:  filename
       INPUT_DIR/PARTITIONED/roms_grd.nc
 
-forcing: filename    
+forcing: filename
+      INPUT_DIR/PARTITIONED/roms_bry_bgc_MARBL.nc
       INPUT_DIR/PARTITIONED/roms_frc_bgc.nc
       INPUT_DIR/PARTITIONED/roms_bry_2012.nc
-      INPUT_DIR/PARTITIONED/roms_bry_bgc_MARBL.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201112.nc      
       INPUT_DIR/PARTITIONED/roms_frc.201201.nc
       INPUT_DIR/PARTITIONED/roms_frc.201202.nc
       INPUT_DIR/PARTITIONED/roms_frc.201203.nc

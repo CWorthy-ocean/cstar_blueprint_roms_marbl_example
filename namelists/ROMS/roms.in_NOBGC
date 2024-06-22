@@ -10,9 +10,20 @@ S-coord: THETA_S,   THETA_B,    TCLINE (m)
 grid:  filename
       INPUT/PARTITIONED/roms_grd.nc
 
-forcing: filename    
-      INPUT/PARTITIONED/roms_bry_2012.nc
-      INPUT/PARTITIONED/roms_frc.201201.nc
+forcing: filename
+      INPUT_DIR/PARTITIONED/roms_bry_2012.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201201.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201202.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201203.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201204.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201205.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201206.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201207.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201208.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201209.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201210.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201211.nc
+      INPUT_DIR/PARTITIONED/roms_frc.201212.nc      
       
 initial: NRREC  filename
           2
