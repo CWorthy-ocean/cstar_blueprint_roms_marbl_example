@@ -1,5 +1,5 @@
 title:
-   Idealized BEC spindown
+   Example ROMS-BEC run
 
 time_stepping: NTIMES   dt[sec]  NDTFAST  NINFO
                6720       360      60      1 
@@ -15,17 +15,19 @@ forcing: filename
       INPUT_DIR/PARTITIONED/roms_frc_bgc.nc
       INPUT_DIR/PARTITIONED/roms_bry_2012.nc
       INPUT_DIR/PARTITIONED/roms_frc.201201.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201202.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201203.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201204.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201205.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201206.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201207.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201208.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201209.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201210.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201211.nc
-      INPUT_DIR/PARTITIONED/roms_frc.201212.nc      
+
+! Uncomment below and delete line break above to run for longer than one month           
+!      INPUT_DIR/PARTITIONED/roms_frc.201202.nc
+!      INPUT_DIR/PARTITIONED/roms_frc.201203.nc
+!      INPUT_DIR/PARTITIONED/roms_frc.201204.nc
+!      INPUT_DIR/PARTITIONED/roms_frc.201205.nc
+!      INPUT_DIR/PARTITIONED/roms_frc.201206.nc
+!      INPUT_DIR/PARTITIONED/roms_frc.201207.nc
+!      INPUT_DIR/PARTITIONED/roms_frc.201208.nc
+!      INPUT_DIR/PARTITIONED/roms_frc.201209.nc
+!      INPUT_DIR/PARTITIONED/roms_frc.201210.nc
+!      INPUT_DIR/PARTITIONED/roms_frc.201211.nc
+!      INPUT_DIR/PARTITIONED/roms_frc.201212.nc      
       
 initial: NRREC  filename
           2
