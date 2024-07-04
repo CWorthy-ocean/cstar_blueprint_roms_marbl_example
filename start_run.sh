@@ -87,7 +87,7 @@ echo "########################################################################"
 
 cp ${PREFIX}_rst.*.?.nc RST/
 
-for X in ${PREFIX}_???.*.0.nc; do
+for X in ${PREFIX}_*.*.0.nc; do
     ncjoin ${X/.0.nc}.?.nc
     if [ -e ${X/.0.nc}.nc ]; then
 	rm ${X/.0.nc}.?.nc
