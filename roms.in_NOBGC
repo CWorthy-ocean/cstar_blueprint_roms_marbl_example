@@ -2,7 +2,7 @@ title:
    Idealized BEC spindown
 
 time_stepping: NTIMES   dt[sec]  NDTFAST  NINFO
-                6720      360      60      1 
+      __NTIMES_PLACEHOLDER__      360      60      1 
 
 S-coord: THETA_S,   THETA_B,    TCLINE (m)
           5.0D0        2.0D0    300.D0
@@ -13,6 +13,17 @@ grid:  filename
 forcing: filename    
       INPUT/PARTED/roms_bry_2012.nc
       INPUT/PARTED/roms_frc.201201.nc
+      INPUT/PARTED/roms_frc.201202.nc
+      INPUT/PARTED/roms_frc.201203.nc
+      INPUT/PARTED/roms_frc.201204.nc
+      INPUT/PARTED/roms_frc.201205.nc
+      INPUT/PARTED/roms_frc.201206.nc
+      INPUT/PARTED/roms_frc.201207.nc
+      INPUT/PARTED/roms_frc.201208.nc
+      INPUT/PARTED/roms_frc.201209.nc
+      INPUT/PARTED/roms_frc.201210.nc
+      INPUT/PARTED/roms_frc.201211.nc
+      INPUT/PARTED/roms_frc.201212.nc
       
 initial: NRREC  filename
           2

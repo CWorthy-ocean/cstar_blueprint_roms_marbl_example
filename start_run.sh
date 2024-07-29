@@ -1,5 +1,7 @@
 #!/bin/bash
 
+NTIMESTEPS=240
+
 MY_SYSTEM=$(uname -s)_$(uname -m)
 if [ ! -z ${LMOD_SYSHOST} ];then
     MY_SYSTEM+=_${LMOD_SYSHOST}
@@ -10,23 +12,23 @@ fi
 case "$MY_SYSTEM" in
     Darwin_arm64)
         ROMS_EXEC_CMD() {
-            mpirun -n 9 ./roms ./roms.in_${PREFIX}
+            mpirun -n 9 ./roms ./roms.in
         }
         ;;
     Linux_x86_64_expanse)
         ROMS_EXEC_CMD() {
-            srun --mpi=pmi2 -n 9 ./roms ./roms.in_${PREFIX}
+            srun --mpi=pmi2 -n 9 ./roms ./roms.in
         }
         ;;
     Linux_x86_64_derecho)
 	cd $PBS_O_WORKDIR
         ROMS_EXEC_CMD() {
-            mpirun -n 9 ./roms ./roms.in_${PREFIX}	    
+            mpirun -n 9 ./roms ./roms.in
         }
         ;;
     Linux_x86_64_perlmutter)
 	ROMS_EXEC_CMD() {
-	    srun -n 9 ./roms ./roms.in_${PREFIX}
+	    srun -n 9 ./roms ./roms.in
 	}
 	;;
     Linux_x86_64)
@@ -52,6 +54,8 @@ then
     PREFIX=BEC # BGC with BEC
 fi
 
+# Set the number of timesteps in the namelist file
+perl -pe "s/__NTIMES_PLACEHOLDER__/${NTIMESTEPS}/g" roms.in_${PREFIX} > roms.in
 
 # Split the initial and boundary conditions for use on multiple CPUs (default 8)
 rundir=$(pwd)
