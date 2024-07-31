@@ -1,6 +1,9 @@
 #!/bin/bash
 
+# Set number of time steps to run:
 NTIMESTEPS=240
+
+################################################################################
 
 MY_SYSTEM=$(uname -s)_$(uname -m)
 if [ ! -z ${LMOD_SYSHOST} ];then
@@ -56,6 +59,11 @@ fi
 
 # Set the number of timesteps in the namelist file
 perl -pe "s/__NTIMES_PLACEHOLDER__/${NTIMESTEPS}/g" roms.in_${PREFIX} > roms.in
+
+# Fetch the input files:
+if [ ! -d INPUT ];then
+    ./get_input_files.sh
+fi
 
 # Split the initial and boundary conditions for use on multiple CPUs (default 8)
 rundir=$(pwd)
