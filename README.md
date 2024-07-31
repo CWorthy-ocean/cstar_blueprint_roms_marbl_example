@@ -7,7 +7,7 @@ BGC is handled by either [BEC]( https://doi.org/10.1029/2004GB002220) or [MARBL]
 
 ## Installation
 ### Quick setup:
-If beginning from scratch without an existing install of [ucla-roms](https://github.com/CESR-lab/ucla-roms) or [MARBL](https://github.com/marbl-ecosys/MARBL), it is recommended that you use the [`roms_marbl_setup_assistant`](https://github.com/CWorthy-Ocean/roms_marbl_setup_assistant) to automate the process of configuring your environment and obtaining and installing these external dependencies.
+If beginning from scratch without an existing install of [ucla-roms](https://github.com/CESR-lab/ucla-roms) or [MARBL](https://github.com/marbl-ecosys/MARBL), it is recommended that you use the [`roms_marbl_setup_assistant`](https://github.com/CWorthy-Ocean/roms_marbl_setup_assistant) to automate the process of configuring your environment and obtaining and installing these external dependencies. The setup assistant will automatically prompt you to install this example case, so there is nothing you need to do with this repository. 
 
 ### Manual setup
 This simulation requires installs of [ucla-roms](https://github.com/CESR-lab/ucla-roms) and [MARBL](https://github.com/marbl-ecosys/MARBL). MARBL should be checked out to `marbl0.45.0`.
