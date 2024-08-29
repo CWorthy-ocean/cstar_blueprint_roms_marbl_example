@@ -2,7 +2,7 @@ title:
    Example ROMS run
 
 time_stepping: NTIMES   dt[sec]  NDTFAST  NINFO
-      __NTIMES_PLACEHOLDER__       360      60      1 
+      __NTIMES_PLACEHOLDER__      __TIMESTEP_PLACEHOLDER__      60      1 
 
 S-coord: THETA_S,   THETA_B,    TCLINE (m)
           5.0D0        2.0D0    300.D0
@@ -23,7 +23,7 @@ MARBL_biogeochemistry: namelist  tracer_output_list   diagnostic_output_list
       MARBL_NAMELIST_DIR/marbl_diagnostic_output_list
 		 
 output_root_name:
-      roms
+      ROMS_MARBL
 
 lateral_visc:   VISC2,    VISC4    [m^2/sec for all]
                  0.       0.
