@@ -6,6 +6,9 @@ CASEROOT=$(realpath "$SCRIPT_DIR/../..")
 ROMS_EXE=${CASEROOT}/source_mods/ROMS/roms
 INPUT_DIR=${CASEROOT}/input_datasets
 OUTPUT_DIR=${CASEROOT}/output
+if [ ! -d ${OUTPUT_DIR} ];then
+    mkdir ${OUTPUT_DIR};
+fi
 ROMS_NAMELIST_DIR=${CASEROOT}/namelists/ROMS
 MARBL_NAMELIST_DIR=${CASEROOT}/namelists/MARBL
 
@@ -66,14 +69,14 @@ if grep -q "\!\# define BIOLOGY_BEC2" ${CASEROOT}/source_mods/ROMS/cppdefs.opt;
 then
     if grep -q "\!\# define MARBL\b" ${CASEROOT}/source_mods/ROMS/cppdefs.opt;
     then
-	PREFIX=NOBGC # No biology
+	PREFIX=ROMS_NOBGC # No biology
     elif grep -q "\# define MARBL\b" ${CASEROOT}/source_mods/ROMS/cppdefs.opt;
     then
-	 PREFIX=MARBL # BGC with MARBL
+	 PREFIX=ROMS_MARBL # BGC with MARBL
     fi
 elif grep -q "\# define BIOLOGY_BEC2" ${CASEROOT}/source_mods/ROMS/cppdefs.opt;
 then
-    PREFIX=BEC # BGC with BEC
+    PREFIX=ROMS_BEC # BGC with BEC
 fi
 
 
@@ -83,16 +86,16 @@ fi
 #ln -s code/roms .
 
 cd ${ROMS_NAMELIST_DIR}
-cp roms.in_${PREFIX} roms.in
+cp roms.in_${PREFIX/"ROMS_"} roms.in
 perl -pi -e "s|INPUT_DIR|$INPUT_DIR|g"                   roms.in
 perl -pi -e "s|MARBL_NAMELIST_DIR|$MARBL_NAMELIST_DIR|g" roms.in
 
 cd ${INPUT_DIR}/
 mkdir PARTED/
 for X in {\
-roms_bry_2012.nc,roms_bry_bgc_"${PREFIX}".nc,roms_frc.201112.nc,\
+roms_bry_2012.nc,roms_bry_bgc_"${PREFIX/'ROMS_'}".nc,roms_frc.201112.nc,\
 roms_frc.2012??.nc,roms_frc_bgc.nc,roms_grd.nc,\
-"${PREFIX}"_rst.20120103120000.nc};do
+"${PREFIX/'ROMS_'}"_rst.20120103120000.nc};do
 
     if [ "${X}" = "roms_bry_bgc_NOBGC.nc" ];then continue;fi
     
@@ -114,10 +117,10 @@ ROMS_EXEC_CMD
 
 echo "MAIN RUN DONE"
 echo "########################################################################"
-
+if [ ! -d RST ];then mkdir RST;fi
 cp ${PREFIX}_rst.*.?.nc RST/
 
-for X in ${PREFIX}_???.*.0.nc; do
+for X in ${PREFIX}_*.*.0.nc; do
     ncjoin ${X/.0.nc}.?.nc
     if [ -e ${X/.0.nc}.nc ]; then
 	rm ${X/.0.nc}.?.nc
