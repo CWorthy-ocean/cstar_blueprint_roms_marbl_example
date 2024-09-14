@@ -1,0 +1,28 @@
+---
+roms_tools_version: 1.2.1.dev18
+---
+Grid:
+  N: 100
+  center_lat: 52.36
+  center_lon: -4.1
+  hc: 300.0
+  hmin: 5.0
+  nx: 24
+  ny: 24
+  rot: 0
+  size_x: 240
+  size_y: 240
+  theta_b: 2.0
+  theta_s: 5.0
+  topography_source: ETOPO5
+InitialConditions:
+  ini_time: __START_TIME_PLACEHOLDER_STRING__
+  bgc_source:
+    climatology: true
+    name: CESM_REGRIDDED
+    path: /Users/dafyddstephenson/Code/roms_tools_datasets/CESM-climatology_lowres_regridded.nc  
+  model_reference_date: '2000-01-01T00:00:00'
+  source:
+    climatology: false
+    name: GLORYS
+    path: /Users/dafyddstephenson/Code/roms_tools_datasets/GLORYS/mercatorglorys12v1_gl12_mean_20120101.nc
