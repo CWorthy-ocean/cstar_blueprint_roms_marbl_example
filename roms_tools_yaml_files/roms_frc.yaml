@@ -1,0 +1,28 @@
+---
+roms_tools_version: 1.2.1.dev18
+---
+Grid:
+  N: 100
+  center_lat: 52.36
+  center_lon: -4.1
+  hc: 300.0
+  hmin: 5.0
+  nx: 24
+  ny: 24
+  rot: 0
+  size_x: 240
+  size_y: 240
+  theta_b: 2.0
+  theta_s: 5.0
+  topography_source: ETOPO5
+SurfaceForcing:
+  correct_radiation: true
+  start_time: __START_TIME_PLACEHOLDER_STRING__  
+  end_time: __END_TIME_PLACEHOLDER_STRING__
+  model_reference_date: '2000-01-01T00:00:00'
+  source:
+    climatology: false
+    name: ERA5
+    path: /Users/dafyddstephenson/Code/roms_tools_datasets/ERA5*.nc
+  type: physics
+  use_coarse_grid: true
