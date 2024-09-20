@@ -18,11 +18,11 @@ initial: NRREC  filename
       __INITIAL_CONDITION_FILE_PLACEHOLDER__
 
 MARBL_biogeochemistry: namelist  tracer_output_list   diagnostic_output_list
-      MARBL_NAMELIST_DIR/marbl_in
-      MARBL_NAMELIST_DIR/marbl_tracer_output_list
-      MARBL_NAMELIST_DIR/marbl_diagnostic_output_list
-		 
-output_root_name:
+     __MARBL_SETTINGS_FILE_PLACEHOLDER__
+     __MARBL_TRACER_LIST_FILE_PLACEHOLDER__
+     __MARBL_DIAG_LIST_FILE_PLACEHOLDER__
+SWSD		 
+outpSut_root_name:
       ROMS_MARBL
 
 lateral_visc:   VISC2,    VISC4    [m^2/sec for all]
