@@ -1,5 +1,5 @@
 ---
-roms_tools_version: 1.2.1.dev18
+roms_tools_version: 1.4.0
 ---
 Grid:
   N: 100
@@ -23,6 +23,6 @@ SurfaceForcing:
   source:
     climatology: false
     name: ERA5
-    path: /Users/dafyddstephenson/Code/roms_tools_datasets/ERA5*.nc
+    path: /global/cfs/projectdirs/m4746/Datasets/alpha/ERA5/NA/2012/ERA5*.nc
   type: physics
   use_coarse_grid: true

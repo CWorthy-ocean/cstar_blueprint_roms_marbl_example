@@ -1,5 +1,5 @@
 ---
-roms_tools_version: 1.2.1.dev18
+roms_tools_version: 1.4.0
 ---
 Grid:
   N: 100
@@ -23,6 +23,6 @@ SurfaceForcing:
   source:
     climatology: false
     name: CESM_REGRIDDED
-    path: /Users/dafyddstephenson/Code/roms_tools_datasets/CESM-surface_lowres_regridded.nc
+    path: /global/cfs/projectdirs/m4746/Datasets/alpha/CESM_REGRIDDED/CESM-surface_lowres_regridded.nc
   type: bgc
   use_coarse_grid: false
