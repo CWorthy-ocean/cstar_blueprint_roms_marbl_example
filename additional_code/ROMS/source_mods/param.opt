@@ -16,7 +16,7 @@
 ! nt  must be 2 or more if Salinity is defined
                       
       ! Grid dimensions and subdomains 
-      integer, parameter :: LLm=24, MMm=24, N=100    ! Idealized grid (diff xi and eta size on purpose) 
+      integer, parameter :: LLm=30, MMm=30, N=20    ! Idealized grid (diff xi and eta size on purpose) 
 
       !			For testing it is good to make uneven partitions 
       ! 		to test MPI compataiblity 

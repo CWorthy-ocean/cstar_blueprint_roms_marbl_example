@@ -2,13 +2,13 @@
 roms_tools_version: 1.4.0
 ---
 Grid:
-  N: 100
+  N: 20
   center_lat: 52.36
   center_lon: -4.1
   hc: 300.0
   hmin: 5.0
-  nx: 24
-  ny: 24
+  nx: 30
+  ny: 30
   rot: 0
   size_x: 240
   size_y: 240
