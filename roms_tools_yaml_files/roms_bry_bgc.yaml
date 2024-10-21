@@ -1,5 +1,5 @@
 ---
-roms_tools_version: 1.4.1
+roms_tools_version: 1.4.2
 ---
 BoundaryForcing:
   boundaries:
