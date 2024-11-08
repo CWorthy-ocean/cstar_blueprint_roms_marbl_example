@@ -16,7 +16,7 @@ Grid:
   topography_source: ETOPO5
   hmin: 5.0
 InitialConditions:
-  ini_time: '2012-01-01T12:00:00'
+  ini_time: __START_TIME_PLACEHOLDER_STRING__
   source:
     climatology: false
     name: GLORYS
