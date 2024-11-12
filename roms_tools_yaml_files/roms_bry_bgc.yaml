@@ -19,7 +19,7 @@ BoundaryForcing:
   start_time: __START_TIME_PLACEHOLDER_STRING__
   end_time: __END_TIME_PLACEHOLDER_STRING__
   boundaries:
-    east: false
+    east: true
     north: true
     south: true
     west: true
