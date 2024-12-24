@@ -16,3 +16,11 @@ Grid:
   topography_source:
     name: ETOPO5
   hmin: 5.0
+RiverForcing:
+  start_time: '2012-01-01T00:00:00'
+  end_time: '2012-01-31T00:00:00'
+  source:
+    name: DAI
+    climatology: false
+  convert_to_climatology: never
+  model_reference_date: '2000-01-01T00:00:00'
