@@ -1,5 +1,5 @@
 ---
-roms_tools_version: 2.0.0
+roms_tools_version: 2.1.0
 ---
 Grid:
   nx: 30
@@ -19,12 +19,8 @@ Grid:
 TidalForcing:
   source:
     name: TPXO
-    path: !!python/object/apply:pathlib.PosixPath
-    - /
-    - Users
-    - dafyddstephenson
-    - Code
-    - roms_tools_datasets
+    path: !!python/object/apply:pathlib._local.PosixPath
+    - /Users/dafyddstephenson/Code/roms_tools_datasets
     - tpxo9.v2a.nc
   ntides: 14
   allan_factor: 2.0
