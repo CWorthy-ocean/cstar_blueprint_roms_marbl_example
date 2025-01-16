@@ -1,25 +1,25 @@
 ---
-roms_tools_version: 2.2.0
+roms_tools_version: 2.2.1
 ---
 Grid:
-  N: 20
-  center_lat: 52.36
-  center_lon: -4.1
-  hc: 300.0
-  hmin: 5.0
   nx: 30
   ny: 30
-  rot: 0
   size_x: 240
   size_y: 240
-  theta_b: 2.0
+  center_lon: -4.1
+  center_lat: 52.36
+  rot: 0
+  N: 20
   theta_s: 5.0
+  theta_b: 2.0
+  hc: 300.0
   topography_source:
     name: ETOPO5
+  hmin: 5.0
 TidalForcing:
-  allan_factor: 2.0
-  model_reference_date: '2000-01-01T00:00:00'
-  ntides: 14
   source:
     name: TPXO
-    path: /Users/dafyddstephenson/Code/roms_tools_datasets/tpxo9.v2a.nc
+    path: /global/cfs/projectdirs/m4746/Datasets/alpha/TPXO/tpxo9.v2a.nc
+  ntides: 14
+  allan_factor: 2.0
+  model_reference_date: '2000-01-01T00:00:00'

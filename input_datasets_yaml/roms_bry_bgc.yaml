@@ -1,33 +1,33 @@
 ---
-roms_tools_version: 2.2.0
+roms_tools_version: 2.2.1
 ---
-BoundaryForcing:
-  apply_2d_horizontal_fill: true
-  boundaries:
-    east: false
-    north: true
-    south: true
-    west: true
-  end_time: '2012-01-31T12:00:00'
-  model_reference_date: '2000-01-01T00:00:00'
-  source:
-    climatology: true
-    name: CESM_REGRIDDED
-    path: /Users/dafyddstephenson/Code/roms_tools_datasets/CESM-climatology_lowres_regridded.nc
-  start_time: '2012-01-01T12:00:00'
-  type: bgc
 Grid:
-  N: 20
-  center_lat: 52.36
-  center_lon: -4.1
-  hc: 300.0
-  hmin: 5.0
   nx: 30
   ny: 30
-  rot: 0
   size_x: 240
   size_y: 240
-  theta_b: 2.0
+  center_lon: -4.1
+  center_lat: 52.36
+  rot: 0
+  N: 20
   theta_s: 5.0
+  theta_b: 2.0
+  hc: 300.0
   topography_source:
     name: ETOPO5
+  hmin: 5.0
+BoundaryForcing:
+  start_time: '2012-01-01T00:00:00'
+  end_time: '2012-02-01T00:00:00'
+  boundaries:
+    south: true
+    east: false
+    north: true
+    west: true
+  source:
+    name: CESM_REGRIDDED
+    path: /global/cfs/projectdirs/m4746/Datasets/alpha/CESM_REGRIDDED/CESM-climatology_lowres_regridded.nc
+    climatology: true
+  type: bgc
+  apply_2d_horizontal_fill: true
+  model_reference_date: '2000-01-01T00:00:00'
