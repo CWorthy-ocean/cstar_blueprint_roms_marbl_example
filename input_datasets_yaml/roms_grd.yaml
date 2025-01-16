@@ -1,0 +1,18 @@
+---
+roms_tools_version: 2.2.0
+---
+Grid:
+  N: 20
+  center_lat: 52.36
+  center_lon: -4.1
+  hc: 300.0
+  hmin: 5.0
+  nx: 30
+  ny: 30
+  rot: 0
+  size_x: 240
+  size_y: 240
+  theta_b: 2.0
+  theta_s: 5.0
+  topography_source:
+    name: ETOPO5

@@ -1,0 +1,33 @@
+---
+roms_tools_version: 2.2.0
+---
+BoundaryForcing:
+  apply_2d_horizontal_fill: true
+  boundaries:
+    east: false
+    north: true
+    south: true
+    west: true
+  end_time: '2012-01-31T12:00:00'
+  model_reference_date: '2000-01-01T00:00:00'
+  source:
+    climatology: false
+    name: GLORYS
+    path: /Users/dafyddstephenson/Code/roms_tools_datasets/GLORYS/mercatorglorys*.nc
+  start_time: '2012-01-01T12:00:00'
+  type: physics
+Grid:
+  N: 20
+  center_lat: 52.36
+  center_lon: -4.1
+  hc: 300.0
+  hmin: 5.0
+  nx: 30
+  ny: 30
+  rot: 0
+  size_x: 240
+  size_y: 240
+  theta_b: 2.0
+  theta_s: 5.0
+  topography_source:
+    name: ETOPO5

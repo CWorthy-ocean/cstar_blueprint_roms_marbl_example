@@ -1,5 +1,5 @@
 ---
-roms_tools_version: 2.1.0
+roms_tools_version: 2.2.0
 ---
 Grid:
   nx: 30
@@ -16,12 +16,12 @@ Grid:
   topography_source:
     name: ETOPO5
   hmin: 5.0
-TidalForcing:
+RiverForcing:
+  start_time: '2012-01-01T00:00:00'
+  end_time: '2012-02-01T00:00:00'
   source:
-    name: TPXO
-    path: !!python/object/apply:pathlib._local.PosixPath
-    - /Users/dafyddstephenson/Code/roms_tools_datasets
-    - tpxo9.v2a.nc
-  ntides: 14
-  allan_factor: 2.0
+    name: DAI
+    climatology: false
+  convert_to_climatology: if_any_missing
+  include_bgc: false
   model_reference_date: '2000-01-01T00:00:00'
