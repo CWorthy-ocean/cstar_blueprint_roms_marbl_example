@@ -1,0 +1,62 @@
+registry_attrs:
+  name: roms_marbl_example_cstar_case_yaml
+  valid_date_range:
+    start_date: '2012-01-01 12:00:00'
+    end_date: '2012-01-31 12:00:00'
+components:
+- component:
+    component_type: MARBL
+    base_model:
+      source_repo: https://github.com/marbl-ecosys/MARBL.git
+      checkout_target: marbl0.45.0
+- component:
+    component_type: ROMS
+    base_model:
+      source_repo: https://github.com/CESR-lab/ucla-roms.git
+      checkout_target: 52adceac25670ee985d741d1bad62639dac3d183
+    additional_source_code:
+      location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
+      subdir: roms_compile_time_code
+      checkout_target: cstar_alpha
+      files:
+      - bgc.opt
+      - bulk_frc.opt
+      - cppdefs.opt
+      - diagnostics.opt
+      - ocean_vars.opt
+      - param.opt
+      - tracers.opt
+      - Makefile
+      - Make.depend
+    namelists:
+      location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
+      subdir: roms_runtime_code
+      checkout_target: cstar_alpha
+      files:
+      - roms.in_TEMPLATE
+      - marbl_in
+      - marbl_tracer_output_list
+      - marbl_diagnostic_output_list
+    discretization:
+      time_step: 720
+      n_procs_x: 3
+      n_procs_y: 3
+    model_grid:
+      location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/cstar_alpha/input_datasets_yaml/roms_grd.yaml
+      file_hash: 00f5cfed8eed278f9eb3c207158ab7d3ecec8c3c5bbf39265ace25a9492a44f9
+    initial_conditions:
+      location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/cstar_alpha/input_datasets_yaml/roms_ini.yaml
+      file_hash: 1d60e298e428a7c6dc399464e00e72cf755416b4b1b0bd9f754a08fac2d73da6
+    tidal_forcing:
+      location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/cstar_alpha/input_datasets_yaml/roms_tides.yaml
+      file_hash: 17e82347efab35e6508a0671a698bae8e93e1e944fc9afdb03ed19e3e363c7c4
+    surface_forcing:
+    - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/cstar_alpha/input_datasets_yaml/roms_frc.yaml
+      file_hash: b529ba66a6856a040bb3a21f90a2b4f2d62ecb2cd747ba81d0253d1b157846a9
+    - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/cstar_alpha/input_datasets_yaml/roms_frc_bgc.yaml
+      file_hash: 2858a657b086a24764d25957b2d39893450321d6ed89ce7c88307e9f4eea2341
+    boundary_forcing:
+    - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/cstar_alpha/input_datasets_yaml/roms_bry.yaml
+      file_hash: 857db7b4ce0daf9bfe12a60a887645c49656c4d585286ca0c3715046fc8f3568
+    - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/cstar_alpha/input_datasets_yaml/roms_bry_bgc.yaml
+      file_hash: 8c144be6ef23e3b91beb37ae9bdd52f582906729f9fd34849838d7ac4d05af36

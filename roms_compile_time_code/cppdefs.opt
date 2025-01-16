@@ -60,7 +60,7 @@
 # define OBC_M3ORLANSKI
 # define OBC_TORLANKSI
 # define OBC_WEST
-# define OBC_EAST
+# undef OBC_EAST
 # define OBC_NORTH
 # define OBC_SOUTH
 
