@@ -17,7 +17,7 @@ components:
     additional_source_code:
       location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
       subdir: roms_compile_time_code
-      checkout_target: cstar_alpha
+      checkout_target: main
       files:
       - bgc.opt
       - bulk_frc.opt
@@ -31,7 +31,7 @@ components:
     namelists:
       location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
       subdir: roms_runtime_code
-      checkout_target: cstar_alpha
+      checkout_target: main
       files:
       - roms.in_TEMPLATE
       - marbl_in
@@ -43,20 +43,20 @@ components:
       n_procs_y: 3
     model_grid:
       location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_grd.nc
-      file_hash: 84f3667f39add10e977bb87c74c40776641e8fb27ad5d590948c858afe84a045
+      file_hash: 9e354290740f4b93e8bef0c296962675226a6f13059113ea5ad75bfb9f7a2318
     initial_conditions:
       location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_ini.nc
-      file_hash: 1ffa9a85fe30c4c6999969e716ff6de833fc901d1cc213e89760bff8c22552bd
+      file_hash: 67f99e70d9b7017d46521e9fa0f3d240330c11ec68cad4ae63b7262808ccd356
     tidal_forcing:
       location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_tides.nc
-      file_hash: a711d31087d2b0ed6569736db5139d17100c041d03484892e241a624eb4f9ea9
+      file_hash: b5c16a344d98d27aa9d192285673adf3e0f729c97a2715d48404094dfae1bb75
     surface_forcing:
     - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_frc.nc
-      file_hash: 8ef325c9242db183d27bf037b91c57d42fa04d9bb7ec7249fecc53ca707df2fb
+      file_hash: 48ad89d661138b4353567f38f8b6f68f349b79a0b9fa4df5985b0388d7601aaf
     - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_frc_bgc.nc
-      file_hash: 43bd29ce46394fd62a9f6da299e8cb414df4b21ccf48c64830ee0f560252af39
+      file_hash: c65bad666b030c53a783228086238b1498d19e024b5279f8ffbbb40cbb8d560c
     boundary_forcing:
     - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_bry.nc
-      file_hash: 93dc9e8aaebecec61895e344898a7679d058b8c8768436c45e7cfe6d672d5380
+      file_hash: 76cc8037d99dd3a609acc431e8278597bfda025c496dba9a315854ec8209fb28
     - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_bry_bgc.nc
-      file_hash: 1b2f1cc83441cc80d45055985a01bfaa0bc698104a2c58a00e7a87fafc214575
+      file_hash: 85e2ae664bb0a24cc30377c18987cbb7cab6c7249b6086340df43b035748ce44

@@ -7,7 +7,7 @@ Grid:
   size_x: 240
   size_y: 240
   center_lon: -4.1
-  center_lat: 52.36
+  center_lat: 52.4
   rot: 0
   N: 20
   theta_s: 5.0
