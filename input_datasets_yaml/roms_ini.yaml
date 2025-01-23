@@ -1,5 +1,5 @@
 ---
-roms_tools_version: 2.2.0
+roms_tools_version: 2.2.1
 ---
 Grid:
   nx: 30
@@ -20,12 +20,10 @@ InitialConditions:
   ini_time: '2012-01-01T00:00:00'
   source:
     name: GLORYS
-    path: /Users/dafyddstephenson/Code/roms_tools_datasets/GLORYS/mercatorglorys12v1_gl12_mean_20120101.nc
+    path: /global/cfs/projectdirs/m4746/Datasets/alpha/GLORYS/NA/2012/mercatorglorys12v1_gl12_mean_20120101.nc
     climatology: false
   bgc_source:
     name: CESM_REGRIDDED
-    path: !!python/object/apply:pathlib._local.PosixPath
-    - /Users/dafyddstephenson/Code/roms_tools_datasets
-    - CESM-climatology_lowres_regridded.nc
+    path: /global/cfs/projectdirs/m4746/Datasets/alpha/CESM_REGRIDDED/CESM-climatology_lowres_regridded.nc
     climatology: true
   model_reference_date: '2000-01-01T00:00:00'

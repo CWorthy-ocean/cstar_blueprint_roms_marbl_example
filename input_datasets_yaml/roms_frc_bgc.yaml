@@ -1,5 +1,5 @@
 ---
-roms_tools_version: 2.2.0
+roms_tools_version: 2.2.1
 ---
 Grid:
   nx: 30
@@ -21,7 +21,7 @@ SurfaceForcing:
   end_time: '2012-02-01T00:00:00'
   source:
     name: CESM_REGRIDDED
-    path: /Users/dafyddstephenson/Code/roms_tools_datasets/CESM-surface_lowres_regridded.nc
+    path: /global/cfs/projectdirs/m4746/Datasets/alpha/CESM_REGRIDDED/CESM-surface_lowres_regridded.nc
     climatology: false
   type: bgc
   correct_radiation: false
