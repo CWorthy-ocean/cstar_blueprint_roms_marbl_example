@@ -38,7 +38,7 @@ components:
       - marbl_tracer_output_list
       - marbl_diagnostic_output_list
     discretization:
-      time_step: 720
+      time_step: 60
       n_procs_x: 3
       n_procs_y: 3
     model_grid:
