@@ -1,5 +1,5 @@
 ---
-roms_tools_version: 2.2.1
+roms_tools_version: 2.2.0
 ---
 Grid:
   nx: 30
@@ -7,7 +7,7 @@ Grid:
   size_x: 240
   size_y: 240
   center_lon: -4.1
-  center_lat: 52.36
+  center_lat: 52.4
   rot: 0
   N: 20
   theta_s: 5.0
@@ -19,7 +19,7 @@ Grid:
 TidalForcing:
   source:
     name: TPXO
-    path: /global/cfs/projectdirs/m4746/Datasets/alpha/TPXO/tpxo9.v2a.nc
+    path: /Users/dafyddstephenson/Code/roms_tools_datasets/tpxo9.v2a.nc
   ntides: 14
   allan_factor: 2.0
   model_reference_date: '2000-01-01T00:00:00'

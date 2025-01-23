@@ -1,5 +1,5 @@
 ---
-roms_tools_version: 2.2.1
+roms_tools_version: 2.2.0
 ---
 Grid:
   nx: 30
@@ -7,7 +7,7 @@ Grid:
   size_x: 240
   size_y: 240
   center_lon: -4.1
-  center_lat: 52.36
+  center_lat: 52.4
   rot: 0
   N: 20
   theta_s: 5.0
@@ -26,7 +26,7 @@ BoundaryForcing:
     west: true
   source:
     name: GLORYS
-    path: /global/cfs/projectdirs/m4746/Datasets/alpha/GLORYS/NA/2012/mercatorglorys*.nc
+    path: /Users/dafyddstephenson/Code/roms_tools_datasets/GLORYS/mercatorglorys*.nc
     climatology: false
   type: physics
   apply_2d_horizontal_fill: true
