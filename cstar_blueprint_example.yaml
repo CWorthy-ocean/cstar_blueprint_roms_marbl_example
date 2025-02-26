@@ -1,4 +1,4 @@
-name: roms_marbl_example_cstar_simulation_nc
+name: roms_marbl_example_cstar_simulation
 valid_start_date: 2012-01-01 12:00:00
 valid_end_date: 2012-01-31 12:00:00
 codebase:
