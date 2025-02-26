@@ -1,62 +1,55 @@
-registry_attrs:
-  name: roms_marbl_example_cstar_case_nc
-  valid_date_range:
-    start_date: '2012-01-01 12:00:00'
-    end_date: '2012-01-31 12:00:00'
-components:
-- component:
-    component_type: MARBL
-    base_model:
-      source_repo: https://github.com/marbl-ecosys/MARBL.git
-      checkout_target: marbl0.45.0
-- component:
-    component_type: ROMS
-    base_model:
-      source_repo: https://github.com/CESR-lab/ucla-roms.git
-      checkout_target: main
-    additional_source_code:
-      location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
-      subdir: roms_compile_time_code
-      checkout_target: main
-      files:
-      - bgc.opt
-      - bulk_frc.opt
-      - cppdefs.opt
-      - diagnostics.opt
-      - ocean_vars.opt
-      - param.opt
-      - tracers.opt
-      - Makefile
-      - Make.depend
-    namelists:
-      location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
-      subdir: roms_runtime_code
-      checkout_target: main
-      files:
-      - roms.in_TEMPLATE
-      - marbl_in
-      - marbl_tracer_output_list
-      - marbl_diagnostic_output_list
-    discretization:
-      time_step: 60
-      n_procs_x: 3
-      n_procs_y: 3
-    model_grid:
-      location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_grd.nc
-      file_hash: 9e354290740f4b93e8bef0c296962675226a6f13059113ea5ad75bfb9f7a2318
-    initial_conditions:
-      location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_ini.nc
-      file_hash: 67f99e70d9b7017d46521e9fa0f3d240330c11ec68cad4ae63b7262808ccd356
-    tidal_forcing:
-      location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_tides.nc
-      file_hash: b5c16a344d98d27aa9d192285673adf3e0f729c97a2715d48404094dfae1bb75
-    surface_forcing:
-    - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_frc.nc
-      file_hash: 48ad89d661138b4353567f38f8b6f68f349b79a0b9fa4df5985b0388d7601aaf
-    - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_frc_bgc.nc
-      file_hash: c65bad666b030c53a783228086238b1498d19e024b5279f8ffbbb40cbb8d560c
-    boundary_forcing:
-    - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_bry.nc
-      file_hash: 76cc8037d99dd3a609acc431e8278597bfda025c496dba9a315854ec8209fb28
-    - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_bry_bgc.nc
-      file_hash: 85e2ae664bb0a24cc30377c18987cbb7cab6c7249b6086340df43b035748ce44
+name: roms_marbl_example_cstar_simulation_nc
+valid_start_date: 2012-01-01 12:00:00
+valid_end_date: 2012-01-31 12:00:00
+codebase:
+  source_repo: https://github.com/CESR-lab/ucla-roms.git
+  checkout_target: main
+discretization:
+  time_step: 60
+  n_procs_x: 3
+  n_procs_y: 3
+runtime_code:
+  location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
+  subdir: roms_runtime_code
+  checkout_target: main
+  files:
+  - roms.in_TEMPLATE
+  - marbl_in
+  - marbl_tracer_output_list
+  - marbl_diagnostic_output_list
+compile_time_code:
+  location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
+  subdir: roms_compile_time_code
+  checkout_target: main
+  files:
+  - bgc.opt
+  - bulk_frc.opt
+  - cppdefs.opt
+  - diagnostics.opt
+  - ocean_vars.opt
+  - param.opt
+  - tracers.opt
+  - Makefile
+  - Make.depend
+marbl_codebase:
+  source_repo: https://github.com/marbl-ecosys/MARBL.git
+  checkout_target: marbl0.45.0
+model_grid:
+  location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_grd.nc
+  file_hash: 0e14c90b255c8503707949282f7e2b7f5f4af006e73a6e6693b532fed3a4bfae
+initial_conditions:
+  location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_ini.nc
+  file_hash: a85dc5459dc4194b88634cba11832b913fae0b39ef0abf816cf2285f6291dba0
+tidal_forcing:
+  location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_tides.nc
+  file_hash: 7c3f8cd39532712d2b1f23b4362e6d3e9b096f5c6a1f47686c482a3f1941dfcc
+surface_forcing:
+- location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_frc.nc
+  file_hash: 9cc9f3ce7a1504333ad1f72f0181761517cd88c32fa1de5a60b7821fcd261f94
+- location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_frc_bgc.nc
+  file_hash: efb5fd83d5801c60b34661608cdc56f51f95e308e35135b4c45b95f3aea4807f
+boundary_forcing:
+- location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_bry.nc
+  file_hash: bfded3307e3a035fee9cf90fd7e2d1737bd07ea4bf9110413e1a7e7d05e409e2
+- location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/netcdf_inputs/input_datasets_netcdf/roms_bry_bgc.nc
+  file_hash: 6166ebd583e39e189a5c57b46349d717e528519dbdd818d336ea9b0f1cc18875
