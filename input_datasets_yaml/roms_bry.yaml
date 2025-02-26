@@ -1,5 +1,5 @@
 ---
-roms_tools_version: 2.2.1
+roms_tools_version: 2.4.0
 ---
 Grid:
   nx: 30
@@ -18,7 +18,7 @@ Grid:
   hmin: 5.0
 BoundaryForcing:
   start_time: '2012-01-01T00:00:00'
-  end_time: '2012-02-01T00:00:00'
+  end_time: '2012-01-01T01:00:00'
   boundaries:
     south: true
     east: false
@@ -30,4 +30,5 @@ BoundaryForcing:
     climatology: false
   type: physics
   apply_2d_horizontal_fill: true
+  adjust_depth_for_sea_surface_height: false
   model_reference_date: '2000-01-01T00:00:00'
