@@ -18,7 +18,7 @@ Grid:
   hmin: 5.0
 SurfaceForcing:
   start_time: '2012-01-01T00:00:00'
-  end_time: '2012-01-01T01:00:00'
+  end_time: '2012-02-01T00:00:00'
   source:
     name: CESM_REGRIDDED
     path: /global/cfs/projectdirs/m4746/Datasets/alpha/CESM_REGRIDDED/CESM-surface_lowres_regridded.nc
