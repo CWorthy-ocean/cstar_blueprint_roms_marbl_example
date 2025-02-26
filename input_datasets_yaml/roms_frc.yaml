@@ -21,7 +21,7 @@ SurfaceForcing:
   end_time: '2012-02-01T00:00:00'
   source:
     name: ERA5
-    path: /global/cfs/projectdirs/m4746/Datasets/alpha/ERA5/NA/2012/ERA5_2012-01.nc
+    path: /global/cfs/projectdirs/m4746/Datasets/alpha/CESM_REGRIDDED/ERA5_2012-01.nc
     climatology: false
   type: physics
   correct_radiation: true
