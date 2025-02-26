@@ -13,7 +13,7 @@ components:
     component_type: ROMS
     base_model:
       source_repo: https://github.com/CESR-lab/ucla-roms.git
-      checkout_target: 52adceac25670ee985d741d1bad62639dac3d183
+      checkout_target: main
     additional_source_code:
       location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
       subdir: roms_compile_time_code
@@ -38,7 +38,7 @@ components:
       - marbl_tracer_output_list
       - marbl_diagnostic_output_list
     discretization:
-      time_step: 720
+      time_step: 60
       n_procs_x: 3
       n_procs_y: 3
     model_grid:
