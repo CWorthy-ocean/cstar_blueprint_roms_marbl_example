@@ -9,7 +9,7 @@ discretization:
   n_procs_x: 3
   n_procs_y: 3
 runtime_code:
-  location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/main/
+  location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
   subdir: roms_runtime_code
   checkout_target: main
   files:
@@ -18,7 +18,7 @@ runtime_code:
   - marbl_tracer_output_list
   - marbl_diagnostic_output_list
 compile_time_code:
-  location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/main/
+  location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
   subdir: roms_compile_time_code
   checkout_target: main
   files:
