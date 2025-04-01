@@ -29,3 +29,4 @@ InitialConditions:
   model_reference_date: '2000-01-01T00:00:00'
   adjust_depth_for_sea_surface_height: false
   horizontal_chunk_size: 50
+  bypass_validation: false

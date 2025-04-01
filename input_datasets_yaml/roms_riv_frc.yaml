@@ -23,5 +23,23 @@ RiverForcing:
     name: DAI
     climatology: false
   convert_to_climatology: if_any_missing
-  include_bgc: false
+  include_bgc: true
   model_reference_date: '2000-01-01T00:00:00'
+  indices:
+    _convention: eta_rho, xi_rho
+    Wye:
+    - 5, 28
+    Severn:
+    - 5, 28
+    Tywi:
+    - 7, 13
+    Dee(AfonDyfrd:
+    - 27, 23
+    Teifi:
+    - 11, 12
+    Usk:
+    - 5, 27
+    Taff:
+    - 3, 24
+    Conwy:
+    - 27, 19

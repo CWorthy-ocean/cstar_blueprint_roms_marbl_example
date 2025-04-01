@@ -32,3 +32,4 @@ BoundaryForcing:
   apply_2d_horizontal_fill: true
   adjust_depth_for_sea_surface_height: false
   model_reference_date: '2000-01-01T00:00:00'
+  bypass_validation: false
