@@ -1,5 +1,5 @@
 ---
-roms_tools_version: 2.4.0
+roms_tools_version: 2.5.0
 ---
 Grid:
   nx: 30
@@ -19,7 +19,7 @@ Grid:
 TidalForcing:
   source:
     name: TPXO
-    path: /global/cfs/projectdirs/m4746/Datasets/alpha/CESM_REGRIDDED/tpxo9.v2a.nc
+    path: /global/cfs/projectdirs/m4746/Datasets/alpha/TPXO/tpxo9.v2a.nc
   ntides: 14
   allan_factor: 2.0
   model_reference_date: '2000-01-01T00:00:00'
