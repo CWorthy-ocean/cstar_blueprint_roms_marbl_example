@@ -27,3 +27,4 @@ SurfaceForcing:
   correct_radiation: false
   coarse_grid_mode: never
   model_reference_date: '2000-01-01T00:00:00'
+  bypass_validation: false
