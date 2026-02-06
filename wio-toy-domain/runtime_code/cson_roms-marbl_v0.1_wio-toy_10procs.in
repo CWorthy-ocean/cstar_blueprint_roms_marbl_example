@@ -1,0 +1,57 @@
+title: title
+    cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102
+
+time_stepping: ntimes dt ndtfast ninfo
+    64    1350    60    1
+
+bottom_drag: rdrg rdrg2 zob
+    0.    1.000000E-03    0.01
+
+initial: nrrec ininame
+    1
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/input_datasets/cson_roms-marbl_v0.1_wio-toy_10procs_initial_conditions.nc
+
+forcing: filenames
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/input_datasets/cson_roms-marbl_v0.1_wio-toy_10procs_tidal.nc
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/input_datasets/cson_roms-marbl_v0.1_wio-toy_10procs_river.nc
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/input_datasets/cson_roms-marbl_v0.1_wio-toy_10procs_surface-physics_201112.nc
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/input_datasets/cson_roms-marbl_v0.1_wio-toy_10procs_surface-physics_201201.nc
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/input_datasets/cson_roms-marbl_v0.1_wio-toy_10procs_surface-bgc_clim.nc
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/input_datasets/cson_roms-marbl_v0.1_wio-toy_10procs_boundary-physics_201201.nc
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/input_datasets/cson_roms-marbl_v0.1_wio-toy_10procs_boundary-bgc_clim.nc
+
+output_root_name: output_root_name
+    output
+
+S-coord: theta_s theta_b tcline
+    5.0    2.0    300.0
+
+grid: grid
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/input_datasets/cson_roms-marbl_v0.1_wio-toy_10procs_grid.nc
+
+MARBL_biogeochemistry: marbl_namelist_fname marbl_tracer_list_fname marbl_diag_list_fname
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/runtime_code/marbl_in
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/runtime_code/marbl_tracer_output_list
+    /Users/sam.maticka/cson-forge-data/cson-forge-run/cson_roms-marbl_v0.1_wio-toy_10procs_20120101-20120102/runtime_code/marbl_diagnostic_output_list
+
+lateral_visc: lateral_visc
+    0.
+
+rho0: rho0
+    1000.0
+
+gamma2: gamma2
+    1.0
+
+tracer_diff2: tracer_diff2
+    0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0.
+
+vertical_mixing: Akv_bak Akt_bak
+    0.    0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0. 0 0 0 0
+
+ubind: ubind
+    0.1
+
+v_sponge: v_sponge
+    0.
+
