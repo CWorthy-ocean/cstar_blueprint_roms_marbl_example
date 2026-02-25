@@ -74,6 +74,6 @@ model_params:
   time_step: 900
 
 runtime_params:
-  start_date: "2012-01-01"
-  end_date: "2012-01-02"
-  output_dir: "output"
+  start_date: "2012-01-01 00:00:00"
+  end_date: "2012-01-01 01:00:00"
+  output_dir: "~/cstar/wales_toy_blueprint"
