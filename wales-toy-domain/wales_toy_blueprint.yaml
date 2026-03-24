@@ -38,7 +38,6 @@ code:
       - ocean_vars.opt
       - param.opt
       - tracers.opt
-      - Makefile
       - Make.depend
 
 grid:
@@ -72,6 +71,10 @@ forcing:
       hash: 3b51a46b1bd50d8a0e7c7f96c7b153c9d2c7fb26a8e9d97ce957d43210944909
     - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/refs/heads/main/wales-toy-domain/input_datasets_netcdf/roms_bry_bgc.nc
       hash: 366af33acf309c7644fab8f7bd5385c99123634c82d5c15f09d2033ec7103a6e
+
+cdr_forcing:
+  data:
+    - location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example/raw/refs/heads/main/wales-toy-domain/input_datasets_netcdf/my_cdr_forcing.nc
 
 partitioning:
   n_procs_x: 3
