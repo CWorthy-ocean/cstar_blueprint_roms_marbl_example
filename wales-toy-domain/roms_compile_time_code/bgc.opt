@@ -6,7 +6,7 @@
       ! note: choice of bgc tracers to output is still selected in tracers.opt.
 
       logical,parameter :: wrt_his      = .true.     ! t/f to write module history file
-      real,parameter    :: output_period_his = 900          ! output period in seconds
+      real,parameter    :: output_period_his = 360          ! output period in seconds
       integer,parameter :: nrpf_his          = 124           ! total recs per file
       
       ! still need AVERAGES cppflag set for bgc average file to work:

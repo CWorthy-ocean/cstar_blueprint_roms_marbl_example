@@ -75,7 +75,7 @@ forcing:
 
 cdr_forcing:
   data:
-    - location: /Users/eilerman/git/cstar_blueprint_roms_marbl_example/wales-toy-domain/input_datasets_netcdf/my_cdr_forcing.nc
+    - location: /Users/eilerman/git/roms-tools/docs/my_cdr_forcing.nc
 
 partitioning:
   n_procs_x: 3
