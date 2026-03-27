@@ -31,8 +31,8 @@
                                                          ! Set to false if you want to read in a vertical profile(s).
 
       ! Use either volume flux [m3/s] and tracer concentrations [mmol/m3], or use tracer flux [mmol/s]
-      ! type (ncforce) :: nc_cdrvol = ncforce( vname='cdr_volume', tname='cdr_time')
-      ! type (ncforce) :: nc_cdrtrc = ncforce( vname='cdr_tracer', tname='cdr_time')
+      type (ncforce) :: nc_cdrvol = ncforce( vname='cdr_volume', tname='cdr_time')
+      type (ncforce) :: nc_cdrtrc = ncforce( vname='cdr_tracer', tname='cdr_time')
       type (ncforce) :: nc_cdrflx = ncforce( vname='cdr_trcflx', tname='cdr_time')
 
       character(len=9)  :: cdr_loc_lon = 'cdr_lon'  !!  longitude at center of CDR release [degrees East]
@@ -44,16 +44,16 @@
 
       ! VERTICAL PROFILES FROM FILE ****************************
       ! Layer thicknesses for a vertical profile [m]
-      !type (ncforce)   :: nc_cdrhz  = ncforce( vname='cdr_layer_thickness', tname='cdr_time')
+      type (ncforce)   :: nc_cdrhz  = ncforce( vname='cdr_layer_thickness', tname='cdr_time')
       ! Layerwise additionality
-      !type (ncforce3d) :: nc_cdrflx_dp = ncforce3d( vname='cdr_trcflx_profile', tname='cdr_time')
+      type (ncforce3d) :: nc_cdrflx_dp = ncforce3d( vname='cdr_trcflx_profile', tname='cdr_time')
 
 
       ! 3D FORCING FROM FILE *************************************
-      !type (ncforce3d) :: nc_cdrflx_3d_ALK = ncforce3d( vname='cdr_trcflx_3d_ALK', tname='cdr_time')
-      !type (ncforce3d) :: nc_cdrflx_3d_DIC = ncforce3d( vname='cdr_trcflx_3d_DIC', tname='cdr_time')
+      type (ncforce3d) :: nc_cdrflx_3d_ALK = ncforce3d( vname='cdr_trcflx_3d_ALK', tname='cdr_time')
+      type (ncforce3d) :: nc_cdrflx_3d_DIC = ncforce3d( vname='cdr_trcflx_3d_DIC', tname='cdr_time')
 
-      !integer, parameter :: nz_chd = 50  ! Number of vertical layers in the forcing file, or, if upscaling,
+      integer, parameter :: nz_chd = 50  ! Number of vertical layers in the forcing file, or, if upscaling,
                                          ! the number of vertical layers in the child grid.
 
       ! end user inputs
