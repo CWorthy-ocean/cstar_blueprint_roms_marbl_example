@@ -164,7 +164,7 @@
     nsub_e = 1
     nsub_x = 1
     nt_passive = 0
-    ntrc_bio = 26
+    ntrc_bio = 32
 /
 
 &particles_settings
