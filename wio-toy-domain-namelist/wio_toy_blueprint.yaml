@@ -25,7 +25,6 @@ code:
     filter:
       directory: wio-toy-domain-namelist
       files:
-      - Makefile
       - cppdefs.opt
 grid:
   data:
