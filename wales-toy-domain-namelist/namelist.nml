@@ -197,9 +197,9 @@
 /
 
 &river_frc_settings
-    nriv = 8
+    nriv = 0
     river_analytical = .false.
-    river_source = .true.
+    river_source = .false.
 /
 
 &s_coord
