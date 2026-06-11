@@ -342,7 +342,7 @@
 
 ! Use atmospheric forcing for CO2
 ! Usage notes: None
-#define PCO2AIR_FORCING
+#undef PCO2AIR_FORCING
 
 !----------------------------------------------------------
 
