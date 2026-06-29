@@ -4,7 +4,7 @@ description: toy domain near wales, for fast laptop/CI runs
 application: roms_marbl
 state: draft
 schema_version: 2.0.0
-working_dir: /Users/chris/cstar/wales_toy_blueprint
+working_dir: "~/cstar/wales_toy_blueprint"
 valid_start_date: 2012-01-01 00:00:00
 valid_end_date: 2012-01-31 12:00:00
 code:

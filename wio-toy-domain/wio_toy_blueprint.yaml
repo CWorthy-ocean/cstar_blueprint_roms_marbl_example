@@ -4,7 +4,7 @@ description: wio toy domain for laptop
 application: roms_marbl
 state: draft
 schema_version: 2.0.0
-working_dir: /Users/chris/cstar/wales_toy_blueprint
+working_dir: "~/cstar/wio_toy_blueprint"
 valid_start_date: 2012-01-01 00:00:00
 valid_end_date: 2012-01-02 00:00:00
 code:
