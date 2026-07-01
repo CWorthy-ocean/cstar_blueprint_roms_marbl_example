@@ -71,10 +71,9 @@ forcing:
 partitioning:
   n_procs_x: 3
   n_procs_y: 3
+
 model_params:
   time_step: 360
-
-working_dir: "~/cstar/wales_toy_blueprint"
 
 runtime_params:
   start_date: "2012-01-01 00:00:00"
