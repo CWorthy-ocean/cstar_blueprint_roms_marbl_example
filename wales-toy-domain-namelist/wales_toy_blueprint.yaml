@@ -9,10 +9,10 @@ code:
   roms:
     documentation: cworthy fork
     location: https://github.com/CWorthy-ocean/ucla-roms.git
-    branch: dev-sje-compilation
+    commit: 0.2.0
   run_time:
     location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
-    branch: namelist
+    branch: main
     filter:
       directory: wales-toy-domain-namelist
       files:
@@ -20,7 +20,7 @@ code:
       - namelist.nml
   compile_time:
     location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
-    branch: namelist
+    branch: main
     filter:
       directory: wales-toy-domain-namelist
       files:

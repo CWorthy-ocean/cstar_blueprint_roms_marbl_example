@@ -8,10 +8,10 @@ valid_end_date: 2012-01-02 00:00:00
 code:
   roms:
     location: https://github.com/CWorthy-ocean/ucla-roms.git
-    branch: dev-sje-compilation
+    branch: 0.2.0
   run_time:
     location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
-    branch: namelist
+    branch: main
     filter:
       directory: wio-toy-domain-namelist
       files:
@@ -19,7 +19,7 @@ code:
       - namelist.nml
   compile_time:
     location: https://github.com/CWorthy-ocean/cstar_blueprint_roms_marbl_example.git
-    branch: namelist
+    branch: main
     filter:
       directory: wio-toy-domain-namelist
       files:
