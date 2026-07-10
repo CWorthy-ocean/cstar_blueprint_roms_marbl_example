@@ -7,6 +7,8 @@
 
 !!!!!!!!!!!!!!!!!!!!!!!!! MODEL SETUP OPTIONS !!!!!!!!!!!!!!!!!!!!!!!!!
 
+#define PARALLEL_IO
+
 ! Attempt to do an exact restart using the initial conditions
 ! Usage notes: Requires two time records in the init file; will return a warning but not crash the model if two records are not available. Only known to work with double-precision output.
 #define EXACT_RESTARTS
